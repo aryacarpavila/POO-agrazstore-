@@ -38,6 +38,14 @@ public class SeleccionarTipoUsuario extends javax.swing.JFrame {
     
     );
 
+      RegistrarCliente.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            new RegistrarCliente().setVisible(true); // Abre la ventana principal
+            dispose(); // Cierra esta ventana
+        }
+    }
+    
+    );
     
 }
 

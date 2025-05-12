@@ -1,0 +1,24 @@
+Nombre: lolita
+ID: 12354
+Correo: lolita@gmail.com
+Contraseña: Wise_girl18$
+Fecha de Nacimiento: 1 de Enero de 2008
+-------------------------------------------------
+Nombre: hola
+ID: 123
+Correo: dd@gmail.com
+Contraseña: abc123
+Fecha de Nacimiento: 1 de Enero de 1996
+-------------------------------------------------
+Nombre: hola
+ID: 102
+Correo: dd@gmail.com
+Contraseña: abdc123
+Fecha de Nacimiento: 1 de Febrero de 1992
+-------------------------------------------------
+Nombre: fff
+ID: 0251
+Correo: d@gmail.com
+Contraseña: ddc123
+Fecha de Nacimiento: 1 de Enero de 1990
+-------------------------------------------------

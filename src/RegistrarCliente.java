@@ -1,11 +1,3 @@
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -15,21 +7,21 @@ import javax.swing.JOptionPane;
  *
  * @author arya
  */
-public class RegistrarEmpleado extends javax.swing.JFrame {
+public class RegistrarCliente extends javax.swing.JFrame {
 
     /**
-     * Creates new form RegistrarEmpleado
+     * Creates new form RegistrarCliente
      */
-    public RegistrarEmpleado() {
+    public RegistrarCliente() {
         initComponents();
         this.getContentPane().setBackground(java.awt.Color.WHITE);
         this.setLocationRelativeTo(null);
         personalizarComponentes(); 
         configurarBotones(); 
-       llenarFecha();
+        llenarFecha();
     }
 
-      
+         
 private void personalizarComponentes() {
     setLocationRelativeTo(null);
 
@@ -38,10 +30,7 @@ private void personalizarComponentes() {
 
     jPanel1.setBackground(new java.awt.Color(255, 255, 255));
     
-    // Ejemplo: Cambiar el color del fondo del panel principal
-    jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-    // Personalización del botón "Volver"
+    // VOLVER AL MENU
     VolverAlMenu.setBackground(new java.awt.Color(255, 255, 255)); // Fondo blanco
     VolverAlMenu.setBorderPainted(false); // Sin borde
     VolverAlMenu.setContentAreaFilled(false); // Sin relleno
@@ -92,56 +81,46 @@ private void llenarFecha(){
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        nombre = new javax.swing.JLabel();
-        nombreEmpleado = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        IDEmpleado = new javax.swing.JTextField();
+        Usuario = new javax.swing.JLabel();
+        nombreCliente = new javax.swing.JTextField();
         Correo = new javax.swing.JLabel();
-        CorreoEmpleado = new javax.swing.JTextField();
+        CorreoCliente = new javax.swing.JTextField();
         FechaDeNacimiento = new javax.swing.JLabel();
-        PasswordEmpleado = new javax.swing.JTextField();
+        PasswordCliente = new javax.swing.JTextField();
         Password = new javax.swing.JLabel();
         Dia = new javax.swing.JComboBox<>();
         Mes = new javax.swing.JComboBox<>();
         Year = new javax.swing.JComboBox<>();
-        textogenerico = new javax.swing.JLabel();
-        RegistrarNuevoEmpleado = new javax.swing.JButton();
-        Usuario = new javax.swing.JLabel();
-        usuarioEmpleado = new javax.swing.JTextField();
+        textogenerico1 = new javax.swing.JLabel();
         VolverAlMenu = new javax.swing.JButton();
+        RegistrarNuevoEmpleado = new javax.swing.JButton();
+        nombre1 = new javax.swing.JLabel();
+        usuarioCliente = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        nombre.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        nombre.setText("Nombre");
+        Usuario.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        Usuario.setText("Usuario");
 
-        nombreEmpleado.setBackground(new java.awt.Color(0, 0, 0));
-        nombreEmpleado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        nombreEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-
-        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel2.setText("ID");
-
-        IDEmpleado.setBackground(new java.awt.Color(0, 0, 0));
-        IDEmpleado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        IDEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        nombreCliente.setBackground(new java.awt.Color(0, 0, 0));
+        nombreCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        nombreCliente.setForeground(new java.awt.Color(255, 255, 255));
 
         Correo.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         Correo.setText("Correo");
 
-        CorreoEmpleado.setBackground(new java.awt.Color(0, 0, 0));
-        CorreoEmpleado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        CorreoEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        CorreoCliente.setBackground(new java.awt.Color(0, 0, 0));
+        CorreoCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        CorreoCliente.setForeground(new java.awt.Color(255, 255, 255));
 
         FechaDeNacimiento.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         FechaDeNacimiento.setText("Fecha de Nacimiento");
 
-        PasswordEmpleado.setBackground(new java.awt.Color(0, 0, 0));
-        PasswordEmpleado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        PasswordEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        PasswordCliente.setBackground(new java.awt.Color(0, 0, 0));
+        PasswordCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        PasswordCliente.setForeground(new java.awt.Color(255, 255, 255));
 
         Password.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         Password.setText("Contraseña");
@@ -176,8 +155,11 @@ private void llenarFecha(){
             }
         });
 
-        textogenerico.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        textogenerico.setText("Empleado");
+        textogenerico1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        textogenerico1.setText("Cliente");
+
+        VolverAlMenu.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        VolverAlMenu.setText("Volver");
 
         RegistrarNuevoEmpleado.setBackground(new java.awt.Color(0, 0, 0));
         RegistrarNuevoEmpleado.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -189,76 +171,72 @@ private void llenarFecha(){
             }
         });
 
-        Usuario.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        Usuario.setText("Usuario");
+        nombre1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        nombre1.setText("Nombre");
 
-        usuarioEmpleado.setBackground(new java.awt.Color(0, 0, 0));
-        usuarioEmpleado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        usuarioEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-
-        VolverAlMenu.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        VolverAlMenu.setText("Volver");
+        usuarioCliente.setBackground(new java.awt.Color(0, 0, 0));
+        usuarioCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        usuarioCliente.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(215, 215, 215)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(RegistrarNuevoEmpleado))
-                    .addComponent(nombre)
-                    .addComponent(PasswordEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Password)
-                    .addComponent(CorreoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Correo)
-                    .addComponent(FechaDeNacimiento)
+                        .addGap(184, 184, 184)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(PasswordCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Usuario)
+                            .addComponent(nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Password)
+                            .addComponent(CorreoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Correo)
+                            .addComponent(FechaDeNacimiento)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Dia, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Year, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nombre1)
+                            .addComponent(usuarioCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Dia, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Year, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(usuarioEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Usuario)
-                    .addComponent(jLabel2)
-                    .addComponent(IDEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(textogenerico))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                        .addGap(233, 233, 233)
                         .addComponent(VolverAlMenu)))
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addGap(0, 263, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(218, 218, 218)
+                        .addComponent(RegistrarNuevoEmpleado))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(233, 233, 233)
+                        .addComponent(textogenerico1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
-                .addComponent(textogenerico)
+                .addContainerGap(102, Short.MAX_VALUE)
+                .addComponent(textogenerico1)
                 .addGap(18, 18, 18)
-                .addComponent(nombre)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addComponent(nombre1)
+                .addGap(4, 4, 4)
+                .addComponent(nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Usuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(usuarioEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(IDEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(usuarioCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Correo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CorreoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CorreoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Password)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PasswordEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PasswordCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FechaDeNacimiento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -266,24 +244,28 @@ private void llenarFecha(){
                     .addComponent(Dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(RegistrarNuevoEmpleado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(VolverAlMenu)
-                .addGap(42, 42, 42))
+                .addGap(46, 46, 46))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 37, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -302,83 +284,7 @@ private void llenarFecha(){
     }//GEN-LAST:event_YearActionPerformed
 
     private void RegistrarNuevoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarNuevoEmpleadoActionPerformed
-
-    String nombre = nombreEmpleado.getText();
-    String id = IDEmpleado.getText();
-    String correo = CorreoEmpleado.getText();
-    String contrasena = PasswordEmpleado.getText();
-    String dia = (String) Dia.getSelectedItem();
-    String mes = (String) Mes.getSelectedItem();
-    String year = (String) Year.getSelectedItem();
-    String fechaNacimiento = dia + " de " + mes + " de " + year;
-    
-    if (nombre.isEmpty() || id.isEmpty() || correo.isEmpty() || contrasena.isEmpty() ||
-         dia.equals("Día") || mes.equals("Mes") || year.equals("Año")) {
-         JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.");
-         return;
-    }
-    
-    int yearNacimiento = Integer.parseInt((String) Year.getSelectedItem());
-    int yearActual = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
-
-    if (yearActual - yearNacimiento < 18) {
-            JOptionPane.showMessageDialog(this, "El empleado debe ser mayor de 18 años.");
-     return;
-    }
-
-    if (!id.matches("\\d+")) {
-            JOptionPane.showMessageDialog(this, "El ID debe ser numérico.");
-          return;
-    }
-
-    if (!correo.matches("^[\\w.-]+@[\\w.-]+\\.\\w{2,}$")) {
-          JOptionPane.showMessageDialog(this, "Correo electrónico inválido.");
-        return;
-        }
-        
-    if (!contrasena.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$")) {
-        JOptionPane.showMessageDialog(this, "La contraseña debe tener al menos 6 caracteres, incluyendo letras y números.");
-        return;
-        }
-
-    // Crear el archivo de texto donde guardaremos los datos
-    String fileName = "empleados.txt";  // El archivo de texto
-
-    try {
-        // Crear el archivo y el escritor
-        FileWriter writer = new FileWriter(fileName, true); 
-        BufferedWriter bufferedWriter = new BufferedWriter(writer);
-        
-        bufferedWriter.write("Nombre: " + nombre);
-        bufferedWriter.newLine(); 
-        bufferedWriter.write("ID: " + id);
-        bufferedWriter.newLine();
-        bufferedWriter.write("Correo: " + correo);
-        bufferedWriter.newLine();
-        bufferedWriter.write("Contraseña: " + contrasena);
-        bufferedWriter.newLine();
-        bufferedWriter.write("Fecha de Nacimiento: " + fechaNacimiento);
-        bufferedWriter.newLine();
-        bufferedWriter.write("-------------------------------------------------");
-        bufferedWriter.newLine(); 
-        bufferedWriter.close();
-
-        // Mostrar un mensaje de éxito
-        JOptionPane.showMessageDialog(this, "Empleado registrado exitosamente.");
-
-        // Limpiar los campos después del registro
-        nombreEmpleado.setText("");
-        IDEmpleado.setText("");
-        CorreoEmpleado.setText("");
-        PasswordEmpleado.setText("");
-        Dia.setSelectedIndex(0);
-        Mes.setSelectedIndex(0);
-        Year.setSelectedIndex(0);
-        
-    } catch (IOException e) {
-        /// Me lo pidio Java ?
-        JOptionPane.showMessageDialog(this, "Error al registrar el empleado: " + e.getMessage());
-    }
+        // TODO add your handling code here:
     }//GEN-LAST:event_RegistrarNuevoEmpleadoActionPerformed
 
     /**
@@ -398,42 +304,40 @@ private void llenarFecha(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarEmpleado().setVisible(true);
+                new RegistrarCliente().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Correo;
-    private javax.swing.JTextField CorreoEmpleado;
+    private javax.swing.JTextField CorreoCliente;
     private javax.swing.JComboBox<String> Dia;
     private javax.swing.JLabel FechaDeNacimiento;
-    private javax.swing.JTextField IDEmpleado;
     private javax.swing.JComboBox<String> Mes;
     private javax.swing.JLabel Password;
-    private javax.swing.JTextField PasswordEmpleado;
+    private javax.swing.JTextField PasswordCliente;
     private javax.swing.JButton RegistrarNuevoEmpleado;
     private javax.swing.JLabel Usuario;
     private javax.swing.JButton VolverAlMenu;
     private javax.swing.JComboBox<String> Year;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel nombre;
-    private javax.swing.JTextField nombreEmpleado;
-    private javax.swing.JLabel textogenerico;
-    private javax.swing.JTextField usuarioEmpleado;
+    private javax.swing.JLabel nombre1;
+    private javax.swing.JTextField nombreCliente;
+    private javax.swing.JLabel textogenerico1;
+    private javax.swing.JTextField usuarioCliente;
     // End of variables declaration//GEN-END:variables
 }

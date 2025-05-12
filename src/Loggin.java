@@ -1,4 +1,6 @@
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /*
@@ -19,6 +21,13 @@ public class Loggin extends javax.swing.JFrame {
      */
     public Loggin() {
         initComponents();
+        this.addComponentListener(new java.awt.event.ComponentAdapter() {
+        @Override
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+               redimensionarLogo();
+            }
+        });
+
         this.getContentPane().setBackground(java.awt.Color.WHITE);
         this.setLocationRelativeTo(null);
         personalizarComponentes(); 
@@ -28,28 +37,18 @@ public class Loggin extends javax.swing.JFrame {
     }
 
     private void validarLogin() {
-        String usuarioIngresado = IngresarPassword.getText();
-        String contraseñaIngresada = IngresarUsuario.getText();
-
-        if (UsuariosRegistrados.admin.validarCredenciales(usuarioIngresado, contraseñaIngresada)) {
-            JOptionPane.showMessageDialog(this, "¡Bienvenido de vuelta, admin!");
-            // Hacer pagina de admin
-        } else if (UsuariosRegistrados.cliente.validarCredenciales(usuarioIngresado, contraseñaIngresada)) {
-            JOptionPane.showMessageDialog(this, "¡Bienvenido de vuelta, " + UsuariosRegistrados.cliente.getNombreUsuario() + "!");
-            // Hacer pagina de cliente
-        } else {
-            JOptionPane.showMessageDialog(this, "Credenciales incorrectas. Intenta de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectas. Intenta de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+        
     }
 
     
-private void personalizarComponentes() {
+ private void personalizarComponentes() {
     // Centrar la ventana en pantalla
     setLocationRelativeTo(null);
 
     // Personalizar el layout
     getContentPane().setLayout(new java.awt.GridBagLayout());
-    java.awt.GridBagConstraints gridBagConstraints = new java.awt.GridBagConstraints();
 
     // Ejemplo: Cambiar el color del fondo del panel principal
     jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -57,6 +56,21 @@ private void personalizarComponentes() {
     // Agregar más personalizaciones según necesites
 }
     
+    private void redimensionarLogo() {
+    if (triangulo_con_logo.getIcon() != null) {
+        ImageIcon icon = new ImageIcon(getClass().getResource("/iconos/triangulo_con_logo.png"));
+        Image img = icon.getImage();
+
+        int ancho = triangulo_con_logo.getWidth();
+        int alto = triangulo_con_logo.getHeight();
+
+        if (ancho > 0 && alto > 0) {
+            Image newImg = img.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+            triangulo_con_logo.setIcon(new ImageIcon(newImg));
+        }
+    }
+}
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -76,6 +90,7 @@ private void personalizarComponentes() {
         IngresarPassword = new javax.swing.JTextField();
         Ingresar_Bottom = new javax.swing.JButton();
         Registrar_Bottom = new javax.swing.JButton();
+        triangulo_con_logo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -121,28 +136,28 @@ private void personalizarComponentes() {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Password)
+                    .addComponent(IngresarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IngresarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Usuario)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
+                        .addGap(19, 19, 19)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Password)
-                            .addComponent(IngresarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(IngresarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Usuario)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(textogenerico))
-                                    .addComponent(Ingresa)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(Ingresar_Bottom))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(211, 211, 211)
-                        .addComponent(Registrar_Bottom)))
-                .addContainerGap(219, Short.MAX_VALUE))
+                                .addGap(6, 6, 6)
+                                .addComponent(textogenerico))
+                            .addComponent(Ingresa))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Registrar_Bottom)
+                .addGap(38, 38, 38))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Ingresar_Bottom)
+                .addGap(48, 48, 48))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,37 +181,45 @@ private void personalizarComponentes() {
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
+        triangulo_con_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/triangulo_con_logo.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(199, 199, 199)
+                .addContainerGap()
+                .addComponent(triangulo_con_logo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(406, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(triangulo_con_logo))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void Registrar_BottomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Registrar_BottomActionPerformed
-       this.dispose();
-         // Abre la ventana de selección de usuario
+        this.dispose();
+        // Abre la ventana de selección de usuario
         new SeleccionarTipoUsuario().setVisible(true);
     }//GEN-LAST:event_Registrar_BottomActionPerformed
 
+    
     /**
      * @param args the command line arguments"
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new Loggin().setVisible(true));
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -209,5 +232,6 @@ private void personalizarComponentes() {
     private javax.swing.JLabel Usuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel textogenerico;
+    private javax.swing.JLabel triangulo_con_logo;
     // End of variables declaration//GEN-END:variables
 }
