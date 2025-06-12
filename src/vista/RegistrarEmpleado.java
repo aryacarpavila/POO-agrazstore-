@@ -1,27 +1,32 @@
 
+import java.awt.Graphics;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 
-/**
- *
- * @author arya
- */
 public class RegistrarEmpleado extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistrarEmpleado
-     */
+    private ImageIcon background;
+    
     public RegistrarEmpleado() {
+        background = new ImageIcon(getClass().getResource("/iconos/background_empleado.png")); 
+
+        setContentPane(new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        });
         initComponents();
         this.getContentPane().setBackground(java.awt.Color.WHITE);
         setIconImage(new ImageIcon(getClass().getResource("/iconos/icon_1.png")).getImage());
         setResizable(false);  // hace que no se pueda agrandar o achicar
+        this.setLocationRelativeTo(null); // centrado
         personalizarComponentes(); 
         configurarBotones(); 
         llenarFecha();
@@ -29,11 +34,6 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
 
       
 private void personalizarComponentes() {
-    setLocationRelativeTo(null);
-
-    getContentPane().setLayout(new java.awt.GridBagLayout());
-
-    // Personalización del botón "Volver"
     VolverAlMenu.setBackground(new java.awt.Color(255, 255, 255)); // Fondo blanco
     VolverAlMenu.setBorderPainted(false); // Sin borde
     VolverAlMenu.setContentAreaFilled(false); // Sin relleno
@@ -80,49 +80,36 @@ private void personalizarComponentes() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        Correo = new javax.swing.JLabel();
-        Dia = new javax.swing.JComboBox<>();
-        textogenerico = new javax.swing.JLabel();
+        FechaDeNacimiento = new javax.swing.JLabel();
         nombreEmpleado = new javax.swing.JTextField();
+        PasswordEmpleado = new javax.swing.JTextField();
         Mes = new javax.swing.JComboBox<>();
+        Password = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
+        Year = new javax.swing.JComboBox<>();
         RegistrarNuevoEmpleado = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         IDEmpleado = new javax.swing.JTextField();
         Usuario = new javax.swing.JLabel();
         usuarioEmpleado = new javax.swing.JTextField();
+        Correo = new javax.swing.JLabel();
         CorreoEmpleado = new javax.swing.JTextField();
+        Dia = new javax.swing.JComboBox<>();
         VolverAlMenu = new javax.swing.JButton();
-        FechaDeNacimiento = new javax.swing.JLabel();
-        PasswordEmpleado = new javax.swing.JTextField();
-        Password = new javax.swing.JLabel();
-        Year = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        Correo.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        Correo.setText("Correo");
-
-        Dia.setBackground(new java.awt.Color(0, 0, 0));
-        Dia.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        Dia.setForeground(new java.awt.Color(255, 255, 255));
-        Dia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Dia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DiaActionPerformed(evt);
-            }
-        });
-
-        textogenerico.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
-        textogenerico.setText("Empleado");
+        FechaDeNacimiento.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        FechaDeNacimiento.setText("Fecha de Nacimiento");
 
         nombreEmpleado.setBackground(new java.awt.Color(0, 0, 0));
         nombreEmpleado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         nombreEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+
+        PasswordEmpleado.setBackground(new java.awt.Color(0, 0, 0));
+        PasswordEmpleado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        PasswordEmpleado.setForeground(new java.awt.Color(255, 255, 255));
 
         Mes.setBackground(new java.awt.Color(0, 0, 0));
         Mes.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -134,8 +121,21 @@ private void personalizarComponentes() {
             }
         });
 
+        Password.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        Password.setText("Contraseña");
+
         nombre.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         nombre.setText("Nombre");
+
+        Year.setBackground(new java.awt.Color(0, 0, 0));
+        Year.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        Year.setForeground(new java.awt.Color(255, 255, 255));
+        Year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Year.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                YearActionPerformed(evt);
+            }
+        });
 
         RegistrarNuevoEmpleado.setBackground(new java.awt.Color(0, 0, 0));
         RegistrarNuevoEmpleado.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -161,40 +161,33 @@ private void personalizarComponentes() {
         usuarioEmpleado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         usuarioEmpleado.setForeground(new java.awt.Color(255, 255, 255));
 
+        Correo.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        Correo.setText("Correo");
+
         CorreoEmpleado.setBackground(new java.awt.Color(0, 0, 0));
         CorreoEmpleado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         CorreoEmpleado.setForeground(new java.awt.Color(255, 255, 255));
 
-        VolverAlMenu.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        VolverAlMenu.setText("Volver");
-
-        FechaDeNacimiento.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        FechaDeNacimiento.setText("Fecha de Nacimiento");
-
-        PasswordEmpleado.setBackground(new java.awt.Color(0, 0, 0));
-        PasswordEmpleado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        PasswordEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-
-        Password.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        Password.setText("Contraseña");
-
-        Year.setBackground(new java.awt.Color(0, 0, 0));
-        Year.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        Year.setForeground(new java.awt.Color(255, 255, 255));
-        Year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Year.addActionListener(new java.awt.event.ActionListener() {
+        Dia.setBackground(new java.awt.Color(0, 0, 0));
+        Dia.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        Dia.setForeground(new java.awt.Color(255, 255, 255));
+        Dia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Dia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                YearActionPerformed(evt);
+                DiaActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(248, 248, 248)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        VolverAlMenu.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        VolverAlMenu.setText("Volver");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(323, 323, 323)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(IDEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -206,34 +199,25 @@ private void personalizarComponentes() {
                     .addComponent(PasswordEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Password)
                     .addComponent(FechaDeNacimiento)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(Dia, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(VolverAlMenu)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Year, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(textogenerico))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(RegistrarNuevoEmpleado)))
-                        .addGap(0, 0, 0)))
-                .addGap(287, 287, 287))
+                        .addComponent(Mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Year, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(VolverAlMenu))
+                            .addComponent(RegistrarNuevoEmpleado))))
+                .addGap(347, 347, 347))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(textogenerico)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(110, Short.MAX_VALUE)
                 .addComponent(nombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -256,26 +240,15 @@ private void personalizarComponentes() {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FechaDeNacimiento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RegistrarNuevoEmpleado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(VolverAlMenu)
-                .addGap(36, 36, 36))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -295,7 +268,7 @@ private void personalizarComponentes() {
 
     private void RegistrarNuevoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarNuevoEmpleadoActionPerformed
 
-    String nombre = nombreEmpleado.getText();
+    String Empleado = nombreEmpleado.getText();
     String id = IDEmpleado.getText();
     String correo = CorreoEmpleado.getText();
     String contrasena = PasswordEmpleado.getText();
@@ -304,7 +277,7 @@ private void personalizarComponentes() {
     String year = (String) Year.getSelectedItem();
     String fechaNacimiento = dia + " de " + mes + " de " + year;
     
-    if (nombre.isEmpty() || id.isEmpty() || correo.isEmpty() || contrasena.isEmpty() ||
+    if (Empleado.isEmpty() || id.isEmpty() || correo.isEmpty() || contrasena.isEmpty() ||
          dia.equals("Día") || mes.equals("Mes") || year.equals("Año")) {
          JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.");
          return;
@@ -334,31 +307,27 @@ private void personalizarComponentes() {
         }
 
     // Crear el archivo de texto donde guardaremos los datos
-    String fileName = "empleados.txt";  // El archivo de texto
+    String fileName = "empleados.txt";  
 
     try {
-        // Crear el archivo y el escritor
         FileWriter writer = new FileWriter(fileName, true); 
-        BufferedWriter bufferedWriter = new BufferedWriter(writer);
-        
-        bufferedWriter.write("Nombre: " + nombre);
-        bufferedWriter.newLine(); 
-        bufferedWriter.write("ID: " + id);
-        bufferedWriter.newLine();
-        bufferedWriter.write("Correo: " + correo);
-        bufferedWriter.newLine();
-        bufferedWriter.write("Contraseña: " + contrasena);
-        bufferedWriter.newLine();
-        bufferedWriter.write("Fecha de Nacimiento: " + fechaNacimiento);
-        bufferedWriter.newLine();
-        bufferedWriter.write("-------------------------------------------------");
-        bufferedWriter.newLine(); 
-        bufferedWriter.close();
+        try (BufferedWriter bufferedWriter = new BufferedWriter(writer)) {
+            bufferedWriter.write("Nombre: " + Empleado);
+            bufferedWriter.newLine();
+            bufferedWriter.write("ID: " + id);
+            bufferedWriter.newLine();
+            bufferedWriter.write("Correo: " + correo);
+            bufferedWriter.newLine();
+            bufferedWriter.write("Contraseña: " + contrasena);
+            bufferedWriter.newLine();
+            bufferedWriter.write("Fecha de Nacimiento: " + fechaNacimiento);
+            bufferedWriter.newLine();
+            bufferedWriter.write("-------------------------------------------------");
+            bufferedWriter.newLine();
+        }
 
-        // Mostrar un mensaje de éxito
         JOptionPane.showMessageDialog(this, "Empleado registrado exitosamente.");
 
-        // Limpiar los campos después del registro
         nombreEmpleado.setText("");
         IDEmpleado.setText("");
         CorreoEmpleado.setText("");
@@ -368,7 +337,6 @@ private void personalizarComponentes() {
         Year.setSelectedIndex(0);
         
     } catch (IOException e) {
-        /// Me lo pidio Java ?
         JOptionPane.showMessageDialog(this, "Error al registrar el empleado: " + e.getMessage());
     }
     }//GEN-LAST:event_RegistrarNuevoEmpleadoActionPerformed
@@ -401,10 +369,8 @@ private void personalizarComponentes() {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegistrarEmpleado().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new RegistrarEmpleado().setVisible(true);
         });
     }
 
@@ -422,10 +388,8 @@ private void personalizarComponentes() {
     private javax.swing.JButton VolverAlMenu;
     private javax.swing.JComboBox<String> Year;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nombre;
     private javax.swing.JTextField nombreEmpleado;
-    private javax.swing.JLabel textogenerico;
     private javax.swing.JTextField usuarioEmpleado;
     // End of variables declaration//GEN-END:variables
 }

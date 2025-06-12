@@ -1,7 +1,3 @@
-///////////**
-///   en proceso
-///
-///**//////////
 
 public class Empleado extends Usuario {
     private String ID;

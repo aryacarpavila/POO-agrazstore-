@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -14,10 +13,8 @@ public class Loggin extends javax.swing.JFrame {
     private ImageIcon backgroundIcon;
     
     public Loggin() {
-        // Cargar imagen de fondo antes del initComponents
-        backgroundIcon = new ImageIcon(getClass().getResource("/iconos/background_1.png")); // Asegúrate de esta ruta
+        backgroundIcon = new ImageIcon(getClass().getResource("/iconos/background_1.png")); 
 
-        // Establecer panel de fondo personalizado
         setContentPane(new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -36,38 +33,42 @@ public class Loggin extends javax.swing.JFrame {
         Ingresar_Bottom.addActionListener(evt -> validarLogin());
     }
 
-    private void validarLogin() {
+        private void validarLogin() {
+        String usuario = IngresarUsuario.getText();
+        String contraseña = String.valueOf(ingresarPassword.getPassword());
+
+        if (usuario.equals("admin") && contraseña.equals("1234")) {
+            new TiendaAgraz().setVisible(true);
+            this.dispose(); 
+            } else {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectas. Intenta de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
-        
-    }
-
-    private void AnimacionBotones() {
-    JButton nuevoIngresar = new BotonAnimado("INGRESAR");
-    JButton nuevoRegistrar = new BotonAnimado("REGISTRARSE");
-
-    // Cambiar el tamaño del texto después de la creación
-    nuevoIngresar.setForeground(Color.WHITE);
-    nuevoRegistrar.setForeground(Color.WHITE);
-    nuevoIngresar.setFont(new Font("Arial", Font.BOLD, 8));
-    nuevoRegistrar.setFont(new Font("Arial", Font.BOLD, 8));
-
-    // Copiar propiedades y eventos de los originales
-    nuevoIngresar.setBounds(Ingresar_Bottom.getBounds());
-    nuevoRegistrar.setBounds(Registrar_Bottom.getBounds());
-
-    nuevoIngresar.addActionListener(evt -> validarLogin());
-    nuevoRegistrar.addActionListener(evt -> Registrar_BottomActionPerformed(evt));
-
-    getContentPane().remove(Ingresar_Bottom);
-    getContentPane().remove(Registrar_Bottom);
-    
-    getContentPane().add(nuevoIngresar);
-    getContentPane().add(nuevoRegistrar);
+            }
+        }
 
 
-    getContentPane().revalidate();
-    getContentPane().repaint();
-    }
+        private void AnimacionBotones() {
+            JButton nuevoIngresar = new BotonAnimado("INGRESAR");
+            JButton nuevoRegistrar = new BotonAnimado("REGISTRARSE");
+
+            // Cambiar el tamaño del texto después de la creación
+            nuevoIngresar.setForeground(Color.WHITE);
+            nuevoRegistrar.setForeground(Color.WHITE);
+            nuevoIngresar.setFont(new Font("Arial", Font.BOLD, 8));
+            nuevoRegistrar.setFont(new Font("Arial", Font.BOLD, 8));
+
+            nuevoIngresar.setBounds(Ingresar_Bottom.getBounds());
+            nuevoRegistrar.setBounds(Registrar_Bottom.getBounds());
+
+            nuevoIngresar.addActionListener(evt -> validarLogin());
+            nuevoRegistrar.addActionListener(evt -> Registrar_BottomActionPerformed(evt));
+
+            getContentPane().remove(Ingresar_Bottom);
+            getContentPane().remove(Registrar_Bottom);
+            getContentPane().add(nuevoIngresar);
+            getContentPane().add(nuevoRegistrar);
+            getContentPane().revalidate();
+            getContentPane().repaint();
+        }
 
 
     
@@ -78,11 +79,11 @@ public class Loggin extends javax.swing.JFrame {
         Ingresa = new javax.swing.JLabel();
         textogenerico = new javax.swing.JLabel();
         Usuario = new javax.swing.JLabel();
-        IngresarPassword = new javax.swing.JTextField();
         IngresarUsuario = new javax.swing.JTextField();
         Password = new javax.swing.JLabel();
         Ingresar_Bottom = new javax.swing.JButton();
         Registrar_Bottom = new javax.swing.JButton();
+        ingresarPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -96,9 +97,6 @@ public class Loggin extends javax.swing.JFrame {
 
         Usuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Usuario.setText("Usuario");
-
-        IngresarPassword.setBackground(new java.awt.Color(0, 0, 0));
-        IngresarPassword.setForeground(new java.awt.Color(255, 255, 255));
 
         IngresarUsuario.setBackground(new java.awt.Color(0, 0, 0));
         IngresarUsuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -121,13 +119,24 @@ public class Loggin extends javax.swing.JFrame {
             }
         });
 
+        ingresarPassword.setBackground(new java.awt.Color(0, 0, 0));
+        ingresarPassword.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        ingresarPassword.setForeground(new java.awt.Color(255, 255, 255));
+        ingresarPassword.setText("");
+        ingresarPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarPasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(486, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(IngresarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,15 +145,14 @@ public class Loggin extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)
                                 .addComponent(textogenerico))))
                     .addComponent(Usuario)
-                    .addComponent(IngresarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Password)
-                    .addComponent(IngresarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(Ingresar_Bottom))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(Registrar_Bottom)))
+                        .addComponent(Registrar_Bottom))
+                    .addComponent(ingresarPassword))
                 .addGap(159, 159, 159))
         );
         layout.setVerticalGroup(
@@ -157,16 +165,16 @@ public class Loggin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(Usuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(IngresarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Password)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(IngresarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(Password)
+                .addGap(4, 4, 4)
+                .addComponent(ingresarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(Ingresar_Bottom)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Registrar_Bottom)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         pack();
@@ -178,6 +186,10 @@ public class Loggin extends javax.swing.JFrame {
         new SeleccionarTipoUsuario().setVisible(true);
     }//GEN-LAST:event_Registrar_BottomActionPerformed
 
+    private void ingresarPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ingresarPasswordActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new Loggin().setVisible(true));
         
@@ -185,12 +197,12 @@ public class Loggin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Ingresa;
-    private javax.swing.JTextField IngresarPassword;
     private javax.swing.JTextField IngresarUsuario;
     private javax.swing.JButton Ingresar_Bottom;
     private javax.swing.JLabel Password;
     private javax.swing.JButton Registrar_Bottom;
     private javax.swing.JLabel Usuario;
+    private javax.swing.JPasswordField ingresarPassword;
     private javax.swing.JLabel textogenerico;
     // End of variables declaration//GEN-END:variables
 }

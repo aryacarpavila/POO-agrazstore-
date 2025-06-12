@@ -1,22 +1,33 @@
 
+import java.awt.Graphics;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 
 
-/**
- *
- * @author arya
- */
 public class RegistrarCliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistrarCliente
-     */
+    private ImageIcon background;
+    
     public RegistrarCliente() {
+        background = new ImageIcon(getClass().getResource("/iconos/background_cliente.png")); 
+
+        setContentPane(new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        });
         initComponents();
         this.getContentPane().setBackground(java.awt.Color.WHITE);
         setIconImage(new ImageIcon(getClass().getResource("/iconos/icon_1.png")).getImage());
         setResizable(false);  // hace que no se pueda agrandar o achicar
+        this.setLocationRelativeTo(null); // centrado
         personalizarComponentes(); 
         configurarBotones(); 
         llenarFecha();
@@ -24,14 +35,6 @@ public class RegistrarCliente extends javax.swing.JFrame {
 
          
 private void personalizarComponentes() {
-    setLocationRelativeTo(null);
-
-    getContentPane().setLayout(new java.awt.GridBagLayout());
-    java.awt.GridBagConstraints gridBagConstraints = new java.awt.GridBagConstraints();
-
-    jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-    
-    // VOLVER AL MENU
     VolverAlMenu.setBackground(new java.awt.Color(255, 255, 255)); // Fondo blanco
     VolverAlMenu.setBorderPainted(false); // Sin borde
     VolverAlMenu.setContentAreaFilled(false); // Sin relleno
@@ -40,13 +43,10 @@ private void personalizarComponentes() {
 }
 
     private void configurarBotones() {
-    // Acción para el botón "Volver a la página de inicio"
-    VolverAlMenu.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            new Loggin().setVisible(true); // Abre la ventana principal
-            dispose(); // Cierra esta ventana
-            }
-       });
+    VolverAlMenu.addActionListener((java.awt.event.ActionEvent evt) -> {
+        new Loggin().setVisible(true); // Abre la ventana principal
+        dispose(); 
+    });
   }   
 
 private void llenarFecha(){
@@ -60,7 +60,7 @@ private void llenarFecha(){
     }
     
     //MESES
-    String[] meses = { "Enero" , "Febrero" , "Marzo", "Abril", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
+    String[] meses = { "Enero" , "Febrero" , "Marzo", "Abril", "Mayo","Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
          for (String mes : meses){
                  Mes.addItem(mes);
         }
@@ -81,7 +81,12 @@ private void llenarFecha(){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        Mes = new javax.swing.JComboBox<>();
+        Year = new javax.swing.JComboBox<>();
+        VolverAlMenu = new javax.swing.JButton();
+        RegistrarNuevoCliente = new javax.swing.JButton();
+        nombre1 = new javax.swing.JLabel();
+        usuarioCliente = new javax.swing.JTextField();
         Usuario = new javax.swing.JLabel();
         nombreCliente = new javax.swing.JTextField();
         Correo = new javax.swing.JLabel();
@@ -90,17 +95,48 @@ private void llenarFecha(){
         PasswordCliente = new javax.swing.JTextField();
         Password = new javax.swing.JLabel();
         Dia = new javax.swing.JComboBox<>();
-        Mes = new javax.swing.JComboBox<>();
-        Year = new javax.swing.JComboBox<>();
-        textogenerico1 = new javax.swing.JLabel();
-        VolverAlMenu = new javax.swing.JButton();
-        RegistrarNuevoEmpleado = new javax.swing.JButton();
-        nombre1 = new javax.swing.JLabel();
-        usuarioCliente = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        Mes.setBackground(new java.awt.Color(0, 0, 0));
+        Mes.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        Mes.setForeground(new java.awt.Color(255, 255, 255));
+        Mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Mes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MesActionPerformed(evt);
+            }
+        });
+
+        Year.setBackground(new java.awt.Color(0, 0, 0));
+        Year.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        Year.setForeground(new java.awt.Color(255, 255, 255));
+        Year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Year.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                YearActionPerformed(evt);
+            }
+        });
+
+        VolverAlMenu.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        VolverAlMenu.setText("Volver");
+
+        RegistrarNuevoCliente.setBackground(new java.awt.Color(0, 0, 0));
+        RegistrarNuevoCliente.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        RegistrarNuevoCliente.setForeground(new java.awt.Color(255, 255, 255));
+        RegistrarNuevoCliente.setText("Registrarme");
+        RegistrarNuevoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistrarNuevoClienteActionPerformed(evt);
+            }
+        });
+
+        nombre1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        nombre1.setText("Nombre");
+
+        usuarioCliente.setBackground(new java.awt.Color(0, 0, 0));
+        usuarioCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        usuarioCliente.setForeground(new java.awt.Color(255, 255, 255));
 
         Usuario.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         Usuario.setText("Usuario");
@@ -136,56 +172,13 @@ private void llenarFecha(){
             }
         });
 
-        Mes.setBackground(new java.awt.Color(0, 0, 0));
-        Mes.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        Mes.setForeground(new java.awt.Color(255, 255, 255));
-        Mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Mes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MesActionPerformed(evt);
-            }
-        });
-
-        Year.setBackground(new java.awt.Color(0, 0, 0));
-        Year.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        Year.setForeground(new java.awt.Color(255, 255, 255));
-        Year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Year.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                YearActionPerformed(evt);
-            }
-        });
-
-        textogenerico1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        textogenerico1.setText("Cliente");
-
-        VolverAlMenu.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        VolverAlMenu.setText("Volver");
-
-        RegistrarNuevoEmpleado.setBackground(new java.awt.Color(0, 0, 0));
-        RegistrarNuevoEmpleado.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        RegistrarNuevoEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        RegistrarNuevoEmpleado.setText("Registrarme");
-        RegistrarNuevoEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegistrarNuevoEmpleadoActionPerformed(evt);
-            }
-        });
-
-        nombre1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        nombre1.setText("Nombre");
-
-        usuarioCliente.setBackground(new java.awt.Color(0, 0, 0));
-        usuarioCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        usuarioCliente.setForeground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(311, 311, 311)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(334, 334, 334)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PasswordCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Usuario)
                     .addComponent(nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -193,7 +186,7 @@ private void llenarFecha(){
                     .addComponent(CorreoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Correo)
                     .addComponent(FechaDeNacimiento)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(Dia, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,26 +194,18 @@ private void llenarFecha(){
                         .addComponent(Year, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(nombre1)
                     .addComponent(usuarioCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(VolverAlMenu))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(RegistrarNuevoEmpleado))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(textogenerico1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addContainerGap(359, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(RegistrarNuevoCliente)))
+                .addContainerGap(336, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(textogenerico1)
-                .addGap(18, 18, 18)
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(113, Short.MAX_VALUE)
                 .addComponent(nombre1)
                 .addGap(4, 4, 4)
                 .addComponent(nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -239,31 +224,15 @@ private void llenarFecha(){
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FechaDeNacimiento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(RegistrarNuevoEmpleado)
+                .addComponent(RegistrarNuevoCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(VolverAlMenu)
-                .addGap(42, 42, 42))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -281,13 +250,70 @@ private void llenarFecha(){
         // TODO add your handling code here:
     }//GEN-LAST:event_YearActionPerformed
 
-    private void RegistrarNuevoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarNuevoEmpleadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RegistrarNuevoEmpleadoActionPerformed
+    private void RegistrarNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarNuevoClienteActionPerformed
+    String nombre = nombreCliente.getText();
+    String correo = CorreoCliente.getText();
+    String password = PasswordCliente.getText();
+    String dia = (String) Dia.getSelectedItem();
+    String mes = (String) Mes.getSelectedItem();
+    String year = (String) Year.getSelectedItem();
+    String fechaNacimiento = dia + " de " + mes + " de " + year;
+    
+    if (nombre.isEmpty() || correo.isEmpty() || password.isEmpty() ||
+         dia.equals("Día") || mes.equals("Mes") || year.equals("Año")) {
+         JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.");
+         return;
+    }
+    
+    int yearNacimiento = Integer.parseInt((String) Year.getSelectedItem());
+    int yearActual = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
 
-    /**
-     * @param args the command line arguments
-     */
+    if (yearActual - yearNacimiento < 18) {
+            JOptionPane.showMessageDialog(this, "El cliente debe ser mayor de 18 años.");
+     return;
+    }
+
+    if (!correo.matches("^[\\w.-]+@[\\w.-]+\\.\\w{2,}$")) {
+          JOptionPane.showMessageDialog(this, "Correo electrónico inválido.");
+        return;
+        }
+        
+    if (!password.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$")) {
+        JOptionPane.showMessageDialog(this, "La contraseña debe tener al menos 6 caracteres, incluyendo letras y números.");
+        return;
+        }
+
+        // Crear el archivo de texto donde guardaremos los datos por ahora
+        String fileName = "clientes.txt"; 
+
+    try {
+        FileWriter writer = new FileWriter(fileName, true); 
+        try (BufferedWriter bufferedWriter = new BufferedWriter(writer)) {
+            bufferedWriter.write("Nombre: " + nombre);
+            bufferedWriter.newLine();
+            bufferedWriter.write("Correo: " + correo);
+            bufferedWriter.newLine();
+            bufferedWriter.write("Contraseña: " + password);
+            bufferedWriter.newLine();
+            bufferedWriter.write("Fecha de Nacimiento: " + fechaNacimiento);
+            bufferedWriter.newLine();
+            bufferedWriter.write("-------------------------------------------------");
+            bufferedWriter.newLine();
+        }
+
+        JOptionPane.showMessageDialog(this, "Cliente registrado exitosamente.");
+        nombreCliente.setText("");
+        CorreoCliente.setText("");
+        PasswordCliente.setText("");
+        Dia.setSelectedIndex(0);
+        Mes.setSelectedIndex(0);
+        Year.setSelectedIndex(0);
+        
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Error al registrar el empleado: " + e.getMessage());
+        }
+    }//GEN-LAST:event_RegistrarNuevoClienteActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -313,10 +339,8 @@ private void llenarFecha(){
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegistrarCliente().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new RegistrarCliente().setVisible(true);
         });
     }
 
@@ -328,14 +352,12 @@ private void llenarFecha(){
     private javax.swing.JComboBox<String> Mes;
     private javax.swing.JLabel Password;
     private javax.swing.JTextField PasswordCliente;
-    private javax.swing.JButton RegistrarNuevoEmpleado;
+    private javax.swing.JButton RegistrarNuevoCliente;
     private javax.swing.JLabel Usuario;
     private javax.swing.JButton VolverAlMenu;
     private javax.swing.JComboBox<String> Year;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nombre1;
     private javax.swing.JTextField nombreCliente;
-    private javax.swing.JLabel textogenerico1;
     private javax.swing.JTextField usuarioCliente;
     // End of variables declaration//GEN-END:variables
 }

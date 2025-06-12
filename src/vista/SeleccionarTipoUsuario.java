@@ -1,20 +1,13 @@
 
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 
-/**
- *
- * @author arya
- */
+
 public class SeleccionarTipoUsuario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SeleccionarTipoUsuario
-     */
     public SeleccionarTipoUsuario() {
         
         initComponents();
@@ -22,34 +15,54 @@ public class SeleccionarTipoUsuario extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/iconos/icon_1.png")).getImage());
         setResizable(false);  // hace que no se pueda agrandar o achicar
         this.setLocationRelativeTo(null);
+        AnimacionBotones();
         personalizarComponentes(); 
         configurarBotones(); 
     }
     
-    private void configurarBotones() {
-    // Acción para el botón "Volver a la página de inicio"
-    VolverAlMenu.addActionListener((java.awt.event.ActionEvent evt) -> {
-        new Loggin().setVisible(true); // Abre la ventana principal
-        dispose(); // Cierra esta ventana
-    });
-            
-    RegistrarEmpleado.addActionListener((java.awt.event.ActionEvent evt) -> {
-        new RegistrarEmpleado().setVisible(true); // Abre la ventana principal
-        dispose(); // Cierra esta ventana
-    });
+    private void AnimacionBotones() {
+        JButton nuevoCliente = new BotonAnimado("CLIENTE");
+        JButton nuevoEmpleado = new BotonAnimado("EMPLEADO");
 
-      RegistrarCliente.addActionListener((java.awt.event.ActionEvent evt) -> {
-          new RegistrarCliente().setVisible(true); // Abre la ventana principal
-          dispose(); // Cierra esta ventana
-    });
+        nuevoCliente.setForeground(Color.WHITE);
+        nuevoEmpleado.setForeground(Color.WHITE);
+        nuevoCliente.setFont(new Font("Arial", Font.BOLD, 20));
+        nuevoEmpleado.setFont(new Font("Arial", Font.BOLD, 20));
+
+        nuevoCliente.setBounds(RegistrarCliente.getBounds());
+        nuevoEmpleado.setBounds(RegistrarEmpleado.getBounds());
+
+        nuevoCliente.addActionListener((java.awt.event.ActionEvent evt) -> {
+            new RegistrarCliente().setVisible(true);
+            dispose();
+        });
+
+        nuevoEmpleado.addActionListener((java.awt.event.ActionEvent evt) -> {
+            new RegistrarEmpleado().setVisible(true);
+            dispose();
+        });
+
+        getContentPane().remove(RegistrarCliente);
+        getContentPane().remove(RegistrarEmpleado);
+        getContentPane().add(nuevoCliente);
+        getContentPane().add(nuevoEmpleado);
+        getContentPane().revalidate();
+        getContentPane().repaint();
+    }
+
     
-}
+    private void configurarBotones() {
+        VolverAlMenu.addActionListener((java.awt.event.ActionEvent evt) -> {
+            new Loggin().setVisible(true); // Abre la ventana principal
+            dispose(); // Cierra esta ventana
+        });          
+    }
 
     
     
 private void personalizarComponentes() {
     
-    VolverAlMenu.setBackground(new java.awt.Color(255, 255, 255)); // Fondo blanco
+    VolverAlMenu.setBackground(new java.awt.Color(255, 255, 255)); 
     VolverAlMenu.setBorderPainted(false); // Sin borde
     VolverAlMenu.setContentAreaFilled(false); // Sin relleno
     VolverAlMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR)); // Cursor tipo mano
@@ -89,16 +102,18 @@ private void personalizarComponentes() {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(199, 199, 199)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(RegistrarCliente)
-                        .addGap(43, 43, 43)
-                        .addComponent(RegistrarEmpleado))
-                    .addComponent(TextoGenerico)
+                        .addGap(199, 199, 199)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(RegistrarCliente)
+                                .addGap(43, 43, 43)
+                                .addComponent(RegistrarEmpleado))
+                            .addComponent(TextoGenerico)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(175, 175, 175)
+                        .addGap(375, 375, 375)
                         .addComponent(VolverAlMenu)))
                 .addContainerGap(216, Short.MAX_VALUE))
         );
@@ -111,19 +126,15 @@ private void personalizarComponentes() {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RegistrarCliente)
                     .addComponent(RegistrarEmpleado))
-                .addGap(28, 28, 28)
+                .addGap(85, 85, 85)
                 .addComponent(VolverAlMenu)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -149,10 +160,8 @@ private void personalizarComponentes() {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SeleccionarTipoUsuario().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new SeleccionarTipoUsuario().setVisible(true);
         });
     }
 
