@@ -37,8 +37,12 @@ public class Loggin extends javax.swing.JFrame {
         String usuario = IngresarUsuario.getText();
         String contraseña = String.valueOf(ingresarPassword.getPassword());
 
-        if (usuario.equals("admin") && contraseña.equals("1234")) {
-            new TiendaAgraz().setVisible(true);
+        if (usuario.equals("cliente") && contraseña.equals("1234")) {
+            new TiendaAgraz_cliente().setVisible(true);
+            this.dispose(); 
+            } 
+        if (usuario.equals("empleado") && contraseña.equals("1234")) {
+            new TiendaAgraz_empleado().setVisible(true);
             this.dispose(); 
             } else {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectas. Intenta de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);

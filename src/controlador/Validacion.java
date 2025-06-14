@@ -29,7 +29,6 @@ public class Validacion {
         if (p == null) return false;
         return esStringValido(p.getNombre())
                 && esStringValido(p.getDescripcion())
-                && esPrecioValido(p.getPrecioBs())
                 && esPrecioValido(p.getPrecioDolar())
                 && esStringValido(p.getCategoria())
                 && esStringValido(p.getColor())
