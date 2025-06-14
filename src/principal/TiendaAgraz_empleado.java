@@ -28,7 +28,7 @@ public class TiendaAgraz_empleado extends JFrame {
 
         JPanel encabezado = new JPanel(new BorderLayout());
         encabezado.setBackground(Color.WHITE);
-        encabezado.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        encabezado.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
         JPanel panelTasa = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panelTasa.setBackground(Color.WHITE);
@@ -75,7 +75,10 @@ public class TiendaAgraz_empleado extends JFrame {
         // PANEL CARRITO
         JPanel panelCarrito = new JPanel(new BorderLayout());
         panelCarrito.setBackground(Color.WHITE);
-        panelCarrito.setBorder(BorderFactory.createTitledBorder("🛒 Carrito"));
+        panelCarrito.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createEmptyBorder(10, 10, 10, 10), 
+            BorderFactory.createTitledBorder("🛒 Carrito")   
+        ));
         panelCarrito.setPreferredSize(new Dimension(250, 0));
 
         modeloCarrito = new DefaultListModel<>();
@@ -118,9 +121,9 @@ public class TiendaAgraz_empleado extends JFrame {
         panelPrincipal.add(panelCarrito, BorderLayout.WEST);
 
         // PANEL PRODUCTOS
-        panelProductos = new JPanel(new GridLayout(0, 3, 20, 20));
+        panelProductos = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
         panelProductos.setBackground(Color.WHITE);
-        panelProductos.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        panelProductos.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JScrollPane scroll = new JScrollPane(panelProductos);
         scroll.getViewport().setBackground(Color.WHITE);
@@ -176,9 +179,11 @@ public class TiendaAgraz_empleado extends JFrame {
         JPanel tarjeta = new JPanel();
         tarjeta.setLayout(new BoxLayout(tarjeta, BoxLayout.Y_AXIS));
         tarjeta.setBackground(Color.WHITE);
-        tarjeta.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        tarjeta.setPreferredSize(new Dimension(200, 240));
-
+        tarjeta.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(Color.BLACK),
+            BorderFactory.createEmptyBorder(5, 5, 5, 5) // Margen interior
+        ));
+        
         JLabel imagen = new JLabel();
         imagen.setAlignmentX(Component.CENTER_ALIGNMENT);
         URL url = getClass().getResource("/iconos/" + p.getRutaImagen());

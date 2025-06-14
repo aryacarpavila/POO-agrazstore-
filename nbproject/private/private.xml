@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/arya/Documents/POO/PROYECTO%20POO%20fase%202/POO-agrazstore/POO-agrazstore--LeonardoCHCH-patch-1/src/principal/TiendaAgraz.java</file>
-            <file>file:/C:/Users/arya/Documents/POO/PROYECTO%20POO%20fase%202/POO-agrazstore/POO-agrazstore--LeonardoCHCH-patch-1/src/controlador/CarritoCompra.java</file>
+            <file>file:/C:/Users/arya/Documents/POO/PROYECTO%20POO%20fase%202/POO-agrazstore/POO-agrazstore--LeonardoCHCH-patch-1/src/principal/TiendaAgraz_cliente.java</file>
             <file>file:/C:/Users/arya/Documents/POO/PROYECTO%20POO%20fase%202/POO-agrazstore/POO-agrazstore--LeonardoCHCH-patch-1/src/vista/Loggin.java</file>
+            <file>file:/C:/Users/arya/Documents/POO/PROYECTO%20POO%20fase%202/POO-agrazstore/POO-agrazstore--LeonardoCHCH-patch-1/src/modelo/Producto.java</file>
+            <file>file:/C:/Users/arya/Documents/POO/PROYECTO%20POO%20fase%202/POO-agrazstore/POO-agrazstore--LeonardoCHCH-patch-1/src/principal/TiendaAgraz_empleado.java</file>
         </group>
     </open-files>
 </project-private>
