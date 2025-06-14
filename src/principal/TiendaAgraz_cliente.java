@@ -30,7 +30,7 @@ public class TiendaAgraz_cliente extends JFrame {
         encabezado.setBackground(Color.WHITE);
         encabezado.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
-        // Panel de tasa del dolar + icono
+        // DOLAR
         JPanel panelTasa = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panelTasa.setBackground(Color.WHITE);
         panelTasa.add(new JLabel("Tasa del Dólar (Bs): "));
@@ -47,7 +47,7 @@ public class TiendaAgraz_cliente extends JFrame {
 
         encabezado.add(panelTasa, BorderLayout.WEST);
 
-        // Filtros + búsqueda
+        // FILTROS + BUSQUEDA
         JPanel filtros = new JPanel(new FlowLayout());
         filtros.setBackground(Color.WHITE);
 
@@ -86,7 +86,7 @@ public class TiendaAgraz_cliente extends JFrame {
         scrollCarrito.getViewport().setBackground(Color.WHITE);
         panelCarrito.add(scrollCarrito, BorderLayout.CENTER);
         
-        // Panel para botones eliminar y vaciar
+        // PANEL BOTONES CARRITO
         JPanel panelBotonesCarrito = new JPanel(new GridLayout(2, 1, 5, 5));
         panelBotonesCarrito.setBackground(Color.WHITE);
 
