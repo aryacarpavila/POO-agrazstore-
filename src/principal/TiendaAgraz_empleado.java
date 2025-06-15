@@ -2,6 +2,7 @@ package principal;
 
 import modelo.Almacenamiento;
 import modelo.Producto;
+import modelo.Moneda;
 import vista.Loggin;
 import javax.swing.*;
 import java.awt.*;
@@ -72,64 +73,128 @@ public class TiendaAgraz_empleado extends JFrame {
         add(scroll, BorderLayout.CENTER);
 
         // PANEL ACCIONES 
-        JPanel panelAcciones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 5));
-        panelAcciones.setBackground(Color.WHITE);
+        JPanel panel_acciones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 5));
+        panel_acciones.setBackground(Color.WHITE);
 
-        JButton btnNuevo = new JButton("Nuevo Producto");
-        btnNuevo.setBackground(Color.BLACK);
-        btnNuevo.setForeground(Color.WHITE);
-        btnNuevo.addActionListener(e -> mostrarDialogoCrearProducto());
-        panelAcciones.add(btnNuevo);
+        JButton boton_nuevo_producto = new JButton("Nuevo Producto");
+        boton_nuevo_producto.setBackground(Color.BLACK);
+        boton_nuevo_producto.setForeground(Color.WHITE);
+        boton_nuevo_producto.addActionListener(e -> mostrarDialogoCrearProducto());
+        panel_acciones.add(boton_nuevo_producto);
 
-        JButton btnCerrar = new JButton("Cerrar sesión");
-        btnCerrar.setBackground(Color.WHITE);
-        btnCerrar.setForeground(Color.BLACK);
-        btnCerrar.addActionListener(e -> {
+        JButton boton_cerrarsesion = new JButton("Cerrar sesión");
+        boton_cerrarsesion.setBackground(Color.WHITE);
+        boton_cerrarsesion.setForeground(Color.BLACK);
+        boton_cerrarsesion.addActionListener(e -> {
             try {
                 Almacenamiento.tasaDolar = Double.parseDouble(tasa_dolar.getText());
             } catch (NumberFormatException ignored) { }
             new Loggin().setVisible(true);
             dispose();
         });
-        panelAcciones.add(btnCerrar);
-        add(panelAcciones, BorderLayout.SOUTH);
-        boton_filtrar.addActionListener(e -> mostrarProductos());
+        panel_acciones.add(boton_cerrarsesion);
+        add(panel_acciones, BorderLayout.SOUTH);
+        
+        boton_filtrar.addActionListener(e -> {
+            try {
+                Almacenamiento.tasaDolar = Double.parseDouble(tasa_dolar.getText().trim());
+                mostrarProductos();
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(
+                    this,
+                    "La tasa de dólar ingresada no es válida.",
+                    "Error",
+                JOptionPane.ERROR_MESSAGE
+                );
+            }
+        });
+        
+        // BOTÓN DE AYUDA FLOTANTE
+        JButton boton_ayuda = new JButton();
+        boton_ayuda.setToolTipText("Ayuda");
+        boton_ayuda.setBounds(930, 470, 40, 40); 
+
+
+        URL ayuda_icon = getClass().getResource("/iconos/ayuda.png");
+        ImageIcon icono = new ImageIcon(ayuda_icon);
+        boton_ayuda.setIcon(new ImageIcon(icono.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+           
+        boton_ayuda.setContentAreaFilled(false);
+        boton_ayuda.setBorderPainted(false);
+        boton_ayuda.setFocusPainted(false);
+        boton_ayuda.setOpaque(false);
+
+        boton_ayuda.addActionListener(e -> {
+            String ayuda = """
+                🔎 FILTRAR PRODUCTOS:
+                - Usa la barra "Buscar" para encontrar productos por nombre.
+                - Filtra por categoría o rango de precios en dólares.
+                - Cambia la tasa del dólar (Bs) y presiona 'Filtrar' para actualizar precios en bolívares.
+                
+                🆕 CREAR NUEVO PRODUCTO:
+                - Presiona 'Nuevo Producto'.
+                - Ingresa todos los campos requeridos: nombre, descripción, precio ($), categoría, talla, color, stock.
+                - Si ya existe un producto con el mismo nombre, talla y precio, solo se actualizará el stock.
+                
+                🗑 ELIMINAR PRODUCTO:
+                - Haz clic sobre cualquier producto mostrado para ver sus detalles.
+                - Puedes eliminarlo directamente desde la tarjeta con el botón rojo 'Eliminar'.
+                
+                🔁 ACTUALIZAR TASA DE CAMBIO:
+                - Modifica el campo "Tasa Dólar (Bs)".
+                - Presiona el botón 'Filtrar' para recalcular todos los precios.
+                
+                🚪 CERRAR SESIÓN:
+                - Presiona 'Cerrar sesión' para volver a la pantalla de inicio.
+                
+                ℹ️ NOTA:
+                - Los precios están en formato: $ Dólar / Bs Bolívar (según tasa actual).
+                - Asegúrate de ingresar valores numéricos válidos para precios, stock y tasa.
+                
+                🛍 ¡Gracias por mantener la tienda al día!
+                """;
+            JOptionPane.showMessageDialog(this, ayuda, "Ayuda", JOptionPane.INFORMATION_MESSAGE, null);
+        });
+
+        JLayeredPane layeredPane = getLayeredPane();
+        layeredPane.add(boton_ayuda, JLayeredPane.PALETTE_LAYER);
+        
         mostrarProductos();
     }
 
     private void mostrarProductos() {
         panel_productos.removeAll();
-        String cat = combo_categoria.getSelectedItem().toString();
-        String pre = combo_precio.getSelectedItem().toString();
-        String txt = campo_busqueda.getText().trim().toLowerCase();
+        String categoria_producto = combo_categoria.getSelectedItem().toString();
+        String precio_producto = combo_precio.getSelectedItem().toString();
+        String texto_busqueda_producto = campo_busqueda.getText().trim().toLowerCase();
         double tasa = Almacenamiento.tasaDolar;
 
-        for (Producto p : Almacenamiento.productos) {
-            boolean okCat = cat.equals("Todas")
-                || p.getCategoria().equalsIgnoreCase(cat);
-            double pd = p.getPrecioDolar();
-            boolean okPre = switch (pre) {
+        for (Producto producto_objeto : Almacenamiento.productos) {
+            boolean categoria_texto = categoria_producto.equals("Todas")
+                || producto_objeto.getCategoria().equalsIgnoreCase(categoria_producto);
+            double pd = producto_objeto.getPrecioDolar();
+            boolean precio_texto = switch (precio_producto) {
                 case "< 50"    -> pd < 50;
                 case "50 - 100"-> pd >= 50 && pd <= 100;
                 case "> 100"   -> pd > 100;
                 default        -> true;
             };
-            boolean okTxt = p.getNombre().toLowerCase().contains(txt);
+            boolean busqueda_texto = producto_objeto.getNombre().toLowerCase().contains(texto_busqueda_producto);
 
-            if (okCat && okPre && okTxt) {
-                panel_productos.add(crearTarjetaProducto(p, tasa));
+            if (categoria_texto && precio_texto && busqueda_texto) {
+                panel_productos.add(crearTarjetaProducto(producto_objeto, tasa));
             }
         }
         panel_productos.revalidate();
         panel_productos.repaint();
     }
 
-    private JPanel crearTarjetaProducto(Producto p, double tasa) {
+    private JPanel crearTarjetaProducto(Producto producto_objeto, double tasa) {
             JPanel tarjeta = new JPanel();
             tarjeta.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-            mostrarDetalleProducto(p);
+            mostrarDetalleProducto(producto_objeto);
         }
     });
             
@@ -143,7 +208,7 @@ public class TiendaAgraz_empleado extends JFrame {
         // Imagen del producto
         JLabel imagen = new JLabel();
         imagen.setAlignmentX(Component.CENTER_ALIGNMENT);
-        URL imagen_url = getClass().getResource("/iconos/" + p.getRutaImagen());
+        URL imagen_url = getClass().getResource("/iconos/" + producto_objeto.getRutaImagen());
         if (imagen_url != null) {
             ImageIcon ic = new ImageIcon(imagen_url);
             Image img = ic.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
@@ -152,16 +217,16 @@ public class TiendaAgraz_empleado extends JFrame {
             imagen.setText("[Imagen]");
         }
 
-    JLabel nombre_producto = new JLabel(p.getNombre(), SwingConstants.CENTER);
+    JLabel nombre_producto = new JLabel(producto_objeto.getNombre(), SwingConstants.CENTER);
     nombre_producto.setFont(new Font("Arial", Font.BOLD, 14));
     nombre_producto.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-    String precio_producto = String.format("$ %.2f / Bs %.2f", (double) p.getPrecioDolar(), (double) p.getPrecioBs(tasa));
+    String precio_producto = "$ " + Moneda.formatear(producto_objeto.getPrecioDolar()) + " / Bs " + Moneda.formatear(producto_objeto.getPrecioBs(tasa));
     JLabel precio_total = new JLabel(precio_producto, SwingConstants.CENTER);
     precio_total.setFont(new Font("Arial", Font.PLAIN, 12));
     precio_total.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-    JLabel talla_producto = new JLabel("Talla: " + p.getTalla());
+    JLabel talla_producto = new JLabel("Talla: " + producto_objeto.getTalla());
     talla_producto.setFont(new Font("Arial", Font.PLAIN, 12));
     talla_producto.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -171,14 +236,13 @@ public class TiendaAgraz_empleado extends JFrame {
     boton_eliminar.setForeground(Color.WHITE);
     boton_eliminar.setAlignmentX(Component.CENTER_ALIGNMENT);
     boton_eliminar.addActionListener(e -> {
-        int confirm = JOptionPane.showConfirmDialog(
-            this,
-            "¿Eliminar “" + p.getNombre() + "”?",
+        int confirm = JOptionPane.showConfirmDialog(this,
+            "¿Eliminar “" + producto_objeto.getNombre() + "”?",
             "Confirmar eliminación",
             JOptionPane.YES_NO_OPTION
         );
         if (confirm == JOptionPane.YES_OPTION) {
-            Almacenamiento.productos.remove(p);
+            Almacenamiento.productos.remove(producto_objeto);
             mostrarProductos();
             JOptionPane.showMessageDialog(this, "Producto eliminado ✅", "Éxito", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -220,9 +284,7 @@ public class TiendaAgraz_empleado extends JFrame {
     detalles.append("Talla: ").append(p.getTalla()).append("\n");
     detalles.append("Color: ").append(p.getColor()).append("\n");
     detalles.append("Stock: ").append(p.getStock()).append("\n");
-    detalles.append(String.format("Precio: $ %.2f / Bs. %.2f",
-        (double) p.getPrecioDolar(),
-        (double) p.getPrecioBs(Almacenamiento.tasaDolar)));
+    detalles.append("Precio: $ ").append(Moneda.formatear(p.getPrecioDolar())).append(" / Bs. ").append(Moneda.formatear(p.getPrecioBs(Almacenamiento.tasaDolar)));
 
     JTextArea info = new JTextArea(detalles.toString());
     info.setEditable(false);
@@ -281,11 +343,11 @@ public class TiendaAgraz_empleado extends JFrame {
             };
 
             boolean found = false;
-            for (Producto p : Almacenamiento.productos) {
-                if (p.getNombre().equalsIgnoreCase(nombre)
-                 && p.getPrecioDolar() == precio_dolar
-                 && p.getTalla() == talla) {
-                    p.setStock(p.getStock() + stock);
+            for (Producto producto_objeto : Almacenamiento.productos) {
+                if (producto_objeto.getNombre().equalsIgnoreCase(nombre)
+                 && producto_objeto.getPrecioDolar() == precio_dolar
+                 && producto_objeto.getTalla() == talla) {
+                    producto_objeto.setStock(producto_objeto.getStock() + stock);
                     found = true;
                     break;
                 }

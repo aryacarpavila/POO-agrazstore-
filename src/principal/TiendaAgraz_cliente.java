@@ -2,6 +2,7 @@ package principal;
 
 import vista.Loggin;
 import modelo.Producto;
+import modelo.Moneda;
 import modelo.Almacenamiento;
 import javax.swing.*;
 import java.awt.*;
@@ -76,15 +77,15 @@ public class TiendaAgraz_cliente extends JFrame {
         filtros.add(boton_filtrar);
         encabezado.add(filtros, BorderLayout.CENTER);
 
-        JButton btnCerrar = new JButton("Cerrar sesión");
-        btnCerrar.setBackground(Color.RED);
-        btnCerrar.setForeground(Color.WHITE);
-        btnCerrar.addActionListener(e -> {
+        JButton boton_cerrarsesion = new JButton("Cerrar sesión");
+        boton_cerrarsesion.setBackground(Color.RED);
+        boton_cerrarsesion.setForeground(Color.WHITE);
+        boton_cerrarsesion.addActionListener(e -> {
             Almacenamiento.tasaDolar = Double.parseDouble(tasa_dolar.getText());
             new Loggin().setVisible(true);
             dispose();
         });
-        encabezado.add(btnCerrar, BorderLayout.EAST);
+        encabezado.add(boton_cerrarsesion, BorderLayout.EAST);
         add(encabezado, BorderLayout.NORTH);
 
         // PANEL CARRITO 
@@ -141,17 +142,12 @@ public class TiendaAgraz_cliente extends JFrame {
                     Producto p = modelo_carrito.getElementAt(i);
                     mensaje.append("- ").append(p.getNombre())
                         .append(" | Talla: ").append(p.getTalla())
-                        .append(" | Bs. ").append(p.getPrecioBs(Almacenamiento.tasaDolar)).append("\n");
+                        .append(" | Bs. ").append(Moneda.formatear(p.getPrecioBs(Almacenamiento.tasaDolar))).append("\n");
                 }
             mensaje.append("\n📦 Cantidad: ").append(modelo_carrito.getSize()).append("\n");
-            mensaje.append(String.format("💰 Total: Bs. %.2f\n\n", totalCarrito));
+            mensaje.append("💰 Total: Bs. ").append(Moneda.formatear(totalCarrito)).append("\n");
             mensaje.append("✅ ¡Pedido exitoso!");
-            JOptionPane.showMessageDialog(this, mensaje.toString(), "Confirmación", JOptionPane.INFORMATION_MESSAGE, null);
-            
-                for (int i=0;i<modelo_carrito.size();i++) {
-                    modelo_carrito.getElementAt(i).incrementarStock();
-                }
-                
+            JOptionPane.showMessageDialog(this, mensaje.toString(), "Confirmación", JOptionPane.INFORMATION_MESSAGE, null);                            
             modelo_carrito.clear();
             totalCarrito = 0;
             actualizarTotal();
@@ -198,12 +194,9 @@ public class TiendaAgraz_cliente extends JFrame {
         JButton boton_ayuda = new JButton();
         boton_ayuda.setToolTipText("Ayuda");
         boton_ayuda.setBounds(920, 490, 40, 40); 
-
-
         URL ayuda_icon = getClass().getResource("/iconos/ayuda.png");
         ImageIcon icono = new ImageIcon(ayuda_icon);
         boton_ayuda.setIcon(new ImageIcon(icono.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
-           
         boton_ayuda.setContentAreaFilled(false);
         boton_ayuda.setBorderPainted(false);
         boton_ayuda.setFocusPainted(false);
@@ -235,19 +228,19 @@ public class TiendaAgraz_cliente extends JFrame {
         String pre = (String) combo_precio.getSelectedItem();
         String txt = campo_busqueda.getText().trim().toLowerCase();
 
-        for (Producto p : Almacenamiento.productos) {
-            boolean okCat = cat.equals("Todas") || p.getCategoria().equalsIgnoreCase(cat);
-            double pd = p.getPrecioDolar();
+        for (Producto producto_objeto : Almacenamiento.productos) {
+            boolean okCat = cat.equals("Todas") || producto_objeto.getCategoria().equalsIgnoreCase(cat);
+            double pd = producto_objeto.getPrecioDolar();
             boolean okPre = switch (pre) {
                 case "< 50" -> pd < 50;
                 case "50 - 100" -> pd >= 50 && pd <= 100;
                 case "> 100" -> pd > 100;
                 default -> true;
             };
-            boolean okTxt = p.getNombre().toLowerCase().contains(txt);
+            boolean okTxt = producto_objeto.getNombre().toLowerCase().contains(txt);
 
             if (okCat && okPre && okTxt) {
-                panel_productos.add(crearTarjeta(p));
+                panel_productos.add(crearTarjeta(producto_objeto));
             }
         }
 
@@ -277,16 +270,17 @@ public class TiendaAgraz_cliente extends JFrame {
             img.setText("[No img]");
         }
         img.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel nombre_producto_tarjeta = new JLabel(p.getNombre(), SwingConstants.CENTER);
+        nombre_producto_tarjeta.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JLabel lblNom = new JLabel(p.getNombre(), SwingConstants.CENTER);
-        lblNom.setAlignmentX(Component.CENTER_ALIGNMENT);
-        JLabel lblPre = new JLabel(
-            "Bs."+p.getPrecioBs(Almacenamiento.tasaDolar) +
-            " / $"+p.getPrecioDolar(),
+        JLabel precio_producto_tarjeta = new JLabel(
+            "Bs." + Moneda.formatear(p.getPrecioBs(Almacenamiento.tasaDolar)) +
+            " / $" + Moneda.formatear(p.getPrecioDolar()),
             SwingConstants.CENTER);
-        lblPre.setAlignmentX(Component.CENTER_ALIGNMENT);
-        JLabel lblTal = new JLabel("Talla: "+p.getTalla());
-        lblTal.setAlignmentX(Component.CENTER_ALIGNMENT);
+        precio_producto_tarjeta.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JLabel talla_producto_tarjeta = new JLabel("Talla: " + p.getTalla());
+        talla_producto_tarjeta.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JButton boton = new JButton(p.getStock() > 0 ? "Agregar" : "SOLD OUT");
         boton.setEnabled(p.getStock() > 0);
@@ -303,22 +297,22 @@ public class TiendaAgraz_cliente extends JFrame {
 
         auxiliar.add(Box.createVerticalStrut(5));
         auxiliar.add(img);
-        auxiliar.add(lblNom);
-        auxiliar.add(lblPre);
-        auxiliar.add(lblTal);
+        auxiliar.add(nombre_producto_tarjeta);
+        auxiliar.add(precio_producto_tarjeta);
+        auxiliar.add(talla_producto_tarjeta);
         auxiliar.add(Box.createVerticalStrut(5));
         auxiliar.add(boton);
         auxiliar.add(Box.createVerticalStrut(5));
         return auxiliar;
     }
 
-    private void mostrarDetalleProducto(Producto p) {
+    private void mostrarDetalleProducto(Producto producto_objeto) {
         JPanel panel = new JPanel(new BorderLayout(10, 10));
         panel.setBackground(Color.WHITE);
 
         JLabel imagen = new JLabel();
         imagen.setHorizontalAlignment(JLabel.CENTER);
-        URL url = getClass().getResource("/iconos/" + p.getRutaImagen());
+        URL url = getClass().getResource("/iconos/" + producto_objeto.getRutaImagen());
         if (url != null) {
             ImageIcon ic = new ImageIcon(url);
             Image img = ic.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
@@ -328,15 +322,13 @@ public class TiendaAgraz_cliente extends JFrame {
         }
 
         StringBuilder detalles = new StringBuilder();
-        detalles.append("Nombre: ").append(p.getNombre()).append("\n");
-        detalles.append("Descripción: ").append(p.getDescripcion()).append("\n");
-        detalles.append("Categoría: ").append(p.getCategoria()).append("\n");
-        detalles.append("Talla: ").append(p.getTalla()).append("\n");
-        detalles.append("Color: ").append(p.getColor()).append("\n");
-        detalles.append("Stock: ").append(p.getStock()).append("\n");
-        detalles.append(String.format("Precio: $ %.2f / Bs. %.2f",
-            (double) p.getPrecioDolar(),
-            (double) p.getPrecioBs(Almacenamiento.tasaDolar)));
+        detalles.append("Nombre: ").append(producto_objeto.getNombre()).append("\n");
+        detalles.append("Descripción: ").append(producto_objeto.getDescripcion()).append("\n");
+        detalles.append("Categoría: ").append(producto_objeto.getCategoria()).append("\n");
+        detalles.append("Talla: ").append(producto_objeto.getTalla()).append("\n");
+        detalles.append("Color: ").append(producto_objeto.getColor()).append("\n");
+        detalles.append("Stock: ").append(producto_objeto.getStock()).append("\n");
+        detalles.append("Precio: $ ").append(Moneda.formatear(producto_objeto.getPrecioDolar())).append(" / Bs. ").append(Moneda.formatear(producto_objeto.getPrecioBs(Almacenamiento.tasaDolar)));
 
         JTextArea info = new JTextArea(detalles.toString());
         info.setEditable(false);
@@ -352,10 +344,10 @@ public class TiendaAgraz_cliente extends JFrame {
     private void actualizarTotal() {
         totalCarrito = 0;
         for (int i = 0; i < modelo_carrito.getSize(); i++) {
-            Producto p = modelo_carrito.getElementAt(i);
-            totalCarrito += p.getPrecioBs(Almacenamiento.tasaDolar);
+            Producto producto_objeto = modelo_carrito.getElementAt(i);
+            totalCarrito += producto_objeto.getPrecioBs(Almacenamiento.tasaDolar);
         }
-        total_carrito.setText(String.format("Total: Bs. %.2f", totalCarrito));
+        total_carrito.setText("Total: Bs. " + Moneda.formatear(totalCarrito));
         boton_pagar.setEnabled(!modelo_carrito.isEmpty());
     }
 
