@@ -21,7 +21,7 @@ INSTRUCCIONES DE INSTALACIÓN Y USO
    https://netbeans.apache.org/download/index.html
 
 3. Abre NetBeans y selecciona:
-   "File/Arhcivo" > "Abrir Proyecto"
+   "File/Archivo" > "Abrir Proyecto"
 
 4. Navega hasta la carpeta descomprimida de este archivo ZIP
    y selecciona el proyecto "AgrazStore Digital".
@@ -32,6 +32,16 @@ INSTRUCCIONES DE INSTALACIÓN Y USO
    - Haz clic derecho en el proyecto > "Ejecutar/Run"
    - O dale a la flecha verde en el panel superior
 
+7. Al compilar observando la ventana de iniciar sesión:
+   - Todo en minúscula
+   - Para ver la interfaz de Cliente, ingresa: 
+	usuario: cliente  ; contraseña: 1234
+   - Para ver la interfaz de Empleado, ingresa: 
+	usuario: empleado  ; contraseña: 1234
+
+8. En ambas ventanas se encuentra un boton con el simbolo '?'
+al darle click, este despliega un cuadro de dialogo con 
+las instrucciones de cada página
 
 ----------------------------------------
 LIBRERÍAS UTILIZADAS
