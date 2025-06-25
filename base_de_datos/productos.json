@@ -1,0 +1,62 @@
+[
+  {
+    "nombre": "Nike Air Force",
+    "descripcion": "Zapatos cómodos",
+    "categoria": "Zapatos",
+    "color": "Negro",
+    "rutaImagen": "Zapatos_default.jpg",
+    "stock": 5,
+    "precioDolar": 100,
+    "talla": "M"
+  },
+  {
+    "nombre": "Nike Top",
+    "descripcion": "Camisa ejercicio",
+    "categoria": "Top",
+    "color": "Rojo",
+    "rutaImagen": "top_default.jpg",
+    "stock": 0,
+    "precioDolar": 120,
+    "talla": "L"
+  },
+  {
+    "nombre": "Nike Bottom",
+    "descripcion": "Ropa urbana",
+    "categoria": "Ropa",
+    "color": "Negro",
+    "rutaImagen": "bottom_default.jpg",
+    "stock": 2,
+    "precioDolar": 80,
+    "talla": "M"
+  },
+  {
+    "nombre": "Nike Hoodie",
+    "descripcion": "suave, tela algodon",
+    "categoria": "top",
+    "color": "Celeste",
+    "rutaImagen": "top_default.jpg",
+    "stock": 1,
+    "precioDolar": 15,
+    "talla": "S"
+  },
+  {
+    "nombre": "Top",
+    "descripcion": "top manga larga",
+    "categoria": "top",
+    "color": "Negro",
+    "rutaImagen": "top.jpg",
+    "stock": 2,
+    "precioDolar": 20,
+    "talla": "S"
+  },
+  {
+    "nombre": "Short Nike",
+    "descripcion": "comodo",
+    "categoria": "bottom",
+    "color": "Negro",
+    "rutaImagen": "nike_short.jpg",
+    "stock": 1,
+    "precioDolar": 25,
+    "talla": "X"
+  }
+]

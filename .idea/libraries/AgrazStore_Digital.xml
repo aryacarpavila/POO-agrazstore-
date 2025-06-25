@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="AgrazStore_Digital">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/AgrazStore_Digital.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

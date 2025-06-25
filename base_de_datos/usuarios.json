@@ -1,0 +1,24 @@
+[
+  {
+    "nombre": "ariana carpavila",
+    "correo": "anfiguera.23@est.ucab.edu.ve",
+    "user": "aryacarpavila",
+    "contraseña": "agraz0911",
+    "tipo": "CLIENTE"
+  },
+  {
+    "nombre": "leonardo chacon",
+    "correo": "leochacon@gmail.com",
+    "user": "leo_chacon",
+    "contraseña": "agraz01",
+    "tipo": "EMPLEADO"
+  },
+  {
+    "FechaNacimiento": "26 de Marzo de 1966",
+    "nombre": "lucia carpavila",
+    "correo": "lcarpavila@gmail.com",
+    "user": "lcarpavila",
+    "contraseña": "albr0966",
+    "tipo": "CLIENTE"
+  }
+]
