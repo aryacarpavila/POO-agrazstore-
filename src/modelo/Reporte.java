@@ -107,7 +107,7 @@ public class Reporte {
         StringBuilder resumen = new StringBuilder("                                              📊✨ RESUMEN MENSUAL DE VENTAS ✨📊\n\n");
         List<String> meses = new ArrayList<>();
         List<String> meses_nombre = List.of("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-                                        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+                                            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
 
         for (Transaccion aux_transacciones : transacciones) {
             String mes = meses_nombre.get(aux_transacciones.getFecha().getMonthValue() - 1) + " " + aux_transacciones.getFecha().getYear();
