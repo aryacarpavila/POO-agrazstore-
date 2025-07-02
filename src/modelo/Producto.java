@@ -1,6 +1,7 @@
 package modelo;
 
 import controlador.Validacion;
+import java.io.File;
 
 public class Producto {
     private String nombre, descripcion, categoria, color, rutaImagen;
@@ -16,8 +17,9 @@ public class Producto {
         if (!Validacion.esStringValido(categoria)) throw new IllegalArgumentException("Categoría inválida");
         if (!Validacion.esStringValido(color)) throw new IllegalArgumentException("Color inválido");
         if (!Validacion.esTallaValida(talla)) throw new IllegalArgumentException("Talla inválida");
-        if (!Validacion.esStringValido(rutaImagen)) throw new IllegalArgumentException("Ruta de imagen inválida");
-
+        if (rutaImagen != null && !new File(rutaImagen).exists()) { throw new IllegalArgumentException("Ruta de imagen inválida"); }
+        
+        this.rutaImagen = rutaImagen;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precioDolar = precioDolar;

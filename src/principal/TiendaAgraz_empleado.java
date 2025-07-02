@@ -18,6 +18,7 @@ import java.nio.file.Files;  // ayuda a cargar las img del ordenador
 import java.nio.file.StandardCopyOption;  // abre las imag del ordenador
 import javax.imageio.ImageIO;  // es para que la imagen cargue de una
 import modelo.Reporte;
+import otros.WrapLayout;
 
 public class TiendaAgraz_empleado extends JFrame {
     private JPanel panel_productos;
@@ -73,6 +74,7 @@ public class TiendaAgraz_empleado extends JFrame {
                     Almacenamiento.tasaDolar = nueva;
                     tasa_dolar.setText(String.valueOf(nueva));
                     mostrarProductos();
+                    Moneda.guardarTasa(nueva);
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(
                         this,
@@ -104,7 +106,7 @@ public class TiendaAgraz_empleado extends JFrame {
         add(panel_filtros, BorderLayout.NORTH);
 
         // PANEL PRODUCTOS 
-        panel_productos = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        panel_productos = new JPanel(new WrapLayout(FlowLayout.LEFT, 10, 10));
         panel_productos.setBackground(Color.WHITE);
         JScrollPane scroll = new JScrollPane(panel_productos);
         scroll.getViewport().setBackground(Color.WHITE);
@@ -143,11 +145,9 @@ public class TiendaAgraz_empleado extends JFrame {
         boton_resumen_mensual.setBackground(Color.BLACK);
         boton_resumen_mensual.setForeground(Color.WHITE);
         boton_resumen_mensual.addActionListener(e -> {
-            String resumen = Reporte.Resumen_Mensual();
-            JOptionPane.showMessageDialog(this, resumen, "Resumen de Ventas Mensual", JOptionPane.INFORMATION_MESSAGE);
+            Reporte.mostrarResumenMensualDialogo(); 
         });
         panel_acciones.add(boton_resumen_mensual);
-
         
         boton_filtrar.addActionListener(e -> {
             try {
@@ -214,6 +214,18 @@ public class TiendaAgraz_empleado extends JFrame {
         layeredPane.add(boton_ayuda, JLayeredPane.PALETTE_LAYER);
         
         mostrarProductos();
+        
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+        @Override
+        public void componentResized(java.awt.event.ComponentEvent evt) {
+            int x = getWidth() - 70;
+            int y = getHeight() - 120;
+                boton_ayuda.setLocation(x, y);
+            }
+        });
+
+        boton_ayuda.setLocation(getWidth() - 70, getHeight() - 120);
+        boton_ayuda.setSize(40, 40); 
     }
 
     private void mostrarProductos() {
@@ -245,8 +257,7 @@ public class TiendaAgraz_empleado extends JFrame {
     
     
     private void mostrarReportes() {
-        String reporteTexto = Reporte.texto_reporte(); 
-        JOptionPane.showMessageDialog(this, reporteTexto, "Reporte de Productos Vendidos", JOptionPane.INFORMATION_MESSAGE);
+        Reporte.mostrarReporteDialogo();
     }   
 
     private JPanel crearTarjetaProducto(Producto producto_objeto, double tasa) {
@@ -265,16 +276,23 @@ public class TiendaAgraz_empleado extends JFrame {
             BorderFactory.createEmptyBorder(5, 5, 5, 5)
         ));
 
-        // Imagen del producto
+        // Imagen del producto       
         JLabel imagen = new JLabel();
         imagen.setAlignmentX(Component.CENTER_ALIGNMENT);
-        URL imagen_url = getClass().getResource("/iconos/" + producto_objeto.getRutaImagen());
-        if (imagen_url != null) {
-            ImageIcon ic = new ImageIcon(imagen_url);
+        File archivoImagen = new File("src/iconos/" + producto_objeto.getRutaImagen());
+        if (archivoImagen.exists()) {
+            ImageIcon ic = new ImageIcon(archivoImagen.getAbsolutePath());
             Image img = ic.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
             imagen.setIcon(new ImageIcon(img));
         } else {
-            imagen.setText("[Imagen]");
+            URL imagen_url = getClass().getResource("src/iconos/" + producto_objeto.getRutaImagen());
+            if (imagen_url != null) {
+                ImageIcon ic = new ImageIcon(imagen_url);
+                Image img = ic.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+                imagen.setIcon(new ImageIcon(img));
+            } else {
+                imagen.setText("[Imagen]");
+            }
         }
 
     JLabel nombre_producto = new JLabel(producto_objeto.getNombre(), SwingConstants.CENTER);
@@ -327,7 +345,7 @@ public class TiendaAgraz_empleado extends JFrame {
     // Imagen de cd: imagenes a la cajita
     JLabel imagen = new JLabel();
     imagen.setHorizontalAlignment(JLabel.CENTER);
-    File imagen_compu = new File(p.getRutaImagen());
+    File imagen_compu = new File("src/iconos/" + p.getRutaImagen());
     if (imagen_compu.exists()) {
         try {
             Image img = ImageIO.read(imagen_compu).getScaledInstance(200, 200, Image.SCALE_SMOOTH);
@@ -388,7 +406,6 @@ public class TiendaAgraz_empleado extends JFrame {
         if (resultado == JFileChooser.APPROVE_OPTION) {
             File imagen_seleccionada = fileChooser.getSelectedFile();
             try {
-                // Copiar imagen seleccionada al directorio "src/iconos/"
                 File destino = new File("src/iconos/" + imagen_seleccionada.getName());
                 Files.copy(imagen_seleccionada.toPath(), destino.toPath(), StandardCopyOption.REPLACE_EXISTING);
                 ruta_imagen_seleccionada.setText(imagen_seleccionada.getName());

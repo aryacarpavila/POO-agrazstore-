@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import otros.HoraLocalAdaptador; 
-import modelo.Transaccion;
 
 public class Almacenamiento {
     public static double tasaDolar = 105.45;

@@ -5,14 +5,14 @@
     "moneda": "Bs.",
     "productos": [
       {
-        "nombre": "Nike Hoodie",
-        "descripcion": "suave, tela algodon",
+        "nombre": "Top halter DREAM",
+        "descripcion": "Top blanco tipo halter con borde negro y estampado DREAM con estrellas",
         "categoria": "top",
-        "color": "Celeste",
-        "rutaImagen": "top_default.jpg",
-        "precioDolar": 15,
-        "talla": "S",
-        "stock": 3
+        "color": "Blanco",
+        "rutaImagen": "blusa_tirantes_negro.jpg",
+        "precioDolar": 25,
+        "talla": "L",
+        "stock": 6
       }
     ],
     "usuario": {
@@ -115,14 +115,14 @@
     "moneda": "Bs.",
     "productos": [
       {
-        "nombre": "Nike Hoodie",
-        "descripcion": "suave, tela algodon",
+        "nombre": "Top halter DREAM",
+        "descripcion": "Top blanco tipo halter con borde negro y estampado DREAM con estrellas",
         "categoria": "top",
-        "color": "Celeste",
-        "rutaImagen": "top_default.jpg",
-        "precioDolar": 15,
-        "talla": "S",
-        "stock": 3
+        "color": "Blanco",
+        "rutaImagen": "blusa_tirantes_negro.jpg",
+        "precioDolar": 25,
+        "talla": "L",
+        "stock": 6
       }
     ],
     "usuario": {
@@ -200,14 +200,14 @@
     "moneda": "Bs.",
     "productos": [
       {
-        "nombre": "Nike Hoodie",
-        "descripcion": "suave, tela algodon",
+        "nombre": "Top halter DREAM",
+        "descripcion": "Top blanco tipo halter con borde negro y estampado DREAM con estrellas",
         "categoria": "top",
-        "color": "Celeste",
-        "rutaImagen": "top_default.jpg",
-        "precioDolar": 15,
-        "talla": "S",
-        "stock": 3
+        "color": "Blanco",
+        "rutaImagen": "blusa_tirantes_negro.jpg",
+        "precioDolar": 25,
+        "talla": "L",
+        "stock": 6
       },
       {
         "nombre": "Top",
@@ -255,14 +255,14 @@
         "stock": 2
       },
       {
-        "nombre": "Nike Hoodie",
-        "descripcion": "suave, tela algodon",
+        "nombre": "Top halter DREAM",
+        "descripcion": "Top blanco tipo halter con borde negro y estampado DREAM con estrellas",
         "categoria": "top",
-        "color": "Celeste",
-        "rutaImagen": "top_default.jpg",
-        "precioDolar": 15,
-        "talla": "S",
-        "stock": 2
+        "color": "Blanco",
+        "rutaImagen": "blusa_tirantes_negro.jpg",
+        "precioDolar": 25,
+        "talla": "L",
+        "stock": 6
       }
     ],
     "usuario": {
@@ -410,14 +410,14 @@
     "moneda": "Bs.",
     "productos": [
       {
-        "nombre": "Nike Hoodie",
-        "descripcion": "suave, tela algodon",
+        "nombre": "Top halter DREAM",
+        "descripcion": "Top blanco tipo halter con borde negro y estampado DREAM con estrellas",
         "categoria": "top",
-        "color": "Celeste",
-        "rutaImagen": "top_default.jpg",
-        "precioDolar": 15,
-        "talla": "S",
-        "stock": 3
+        "color": "Blanco",
+        "rutaImagen": "blusa_tirantes_negro.jpg",
+        "precioDolar": 25,
+        "talla": "L",
+        "stock": 6
       },
       {
         "nombre": "Nike Air Force",

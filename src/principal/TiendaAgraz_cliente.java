@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import modelo.Transaccion;
 import modelo.Usuario;
 import otros.ProductoCarrito;
+import otros.WrapLayout;
 import vista.ResumenPedido;
 import vista.TransaccionVisual;
 
@@ -30,6 +31,7 @@ public class TiendaAgraz_cliente extends JFrame {
     private JButton boton_pagar;
 
     public TiendaAgraz_cliente(Usuario cliente) {
+        
         super("Tienda Agraz - Cliente");
         setIconImage(new ImageIcon(getClass().getResource("/iconos/icon.png")).getImage());
         setSize(1000, 600);
@@ -58,6 +60,7 @@ public class TiendaAgraz_cliente extends JFrame {
         UIManager.put("Button.select", Color.DARK_GRAY);
 
         // DOLAR
+        Almacenamiento.tasaDolar = Moneda.cargarTasa();
         JPanel panelTasa = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panelTasa.setBackground(Color.WHITE);
         panelTasa.add(new JLabel("Tasa del Dólar (Bs): "));
@@ -220,7 +223,7 @@ public class TiendaAgraz_cliente extends JFrame {
 
 
         // PANEL PRODUCTOS 
-        panel_productos = new JPanel(new FlowLayout(FlowLayout.LEFT,10,10));
+        panel_productos = new JPanel(new WrapLayout(FlowLayout.LEFT,10,10));
         JScrollPane scrollProd = new JScrollPane(panel_productos);
         add(scrollProd, BorderLayout.CENTER);
 
@@ -267,7 +270,19 @@ public class TiendaAgraz_cliente extends JFrame {
         JLayeredPane layeredPane = getLayeredPane();
         layeredPane.add(boton_ayuda, JLayeredPane.PALETTE_LAYER);
 
-        mostrarProductos();
+        mostrarProductos();      
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+        @Override
+        public void componentResized(java.awt.event.ComponentEvent evt) {
+            int x = getWidth() - 70;
+            int y = getHeight() - 100;
+                boton_ayuda.setLocation(x, y);
+            }
+        });
+
+        boton_ayuda.setLocation(getWidth() - 70, getHeight() - 100);
+        boton_ayuda.setSize(40, 40); 
+     
     }
 
     public Usuario getCliente() {
@@ -327,8 +342,11 @@ public class TiendaAgraz_cliente extends JFrame {
 
     panel_carrito_contenido.revalidate();
     panel_carrito_contenido.repaint();
+    
+    
 }
 
+        
 
     private void mostrarProductos() {
         panel_productos.removeAll();

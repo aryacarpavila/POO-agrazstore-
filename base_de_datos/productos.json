@@ -30,16 +30,6 @@
     "talla": "M"
   },
   {
-    "nombre": "Nike Hoodie",
-    "descripcion": "suave, tela algodon",
-    "categoria": "top",
-    "color": "Celeste",
-    "rutaImagen": "top_default.jpg",
-    "stock": 11,
-    "precioDolar": 15,
-    "talla": "S"
-  },
-  {
     "nombre": "Top",
     "descripcion": "top manga larga",
     "categoria": "top",
@@ -56,6 +46,36 @@
     "color": "Negro",
     "rutaImagen": "nike_short.jpg",
     "stock": 55,
+    "precioDolar": 25,
+    "talla": "X"
+  },
+  {
+    "nombre": "Camiseta deportiva",
+    "descripcion": "Camiseta ajustada con cremallera frontal",
+    "categoria": "top",
+    "color": "Negro",
+    "rutaImagen": "blusa.jpg",
+    "stock": 5,
+    "precioDolar": 30,
+    "talla": "L"
+  },
+  {
+    "nombre": "Top halter DREAM",
+    "descripcion": "Top blanco tipo halter con borde negro y estampado DREAM con estrellas",
+    "categoria": "top",
+    "color": "Blanco",
+    "rutaImagen": "blusa_tirantes_negro.jpg",
+    "stock": 6,
+    "precioDolar": 25,
+    "talla": "L"
+  },
+  {
+    "nombre": "Top de tirantes azul",
+    "descripcion": "lol",
+    "categoria": "top",
+    "color": "Azul",
+    "rutaImagen": "blusa_tirantes_azul.jpg",
+    "stock": 2,
     "precioDolar": 25,
     "talla": "X"
   }
