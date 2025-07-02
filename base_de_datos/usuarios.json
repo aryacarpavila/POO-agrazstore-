@@ -1,0 +1,59 @@
+[
+  {
+    "nombre": "ariana carpavila",
+    "correo": "anfiguera.23@est.ucab.edu.ve",
+    "user": "aryacarpavila",
+    "contraseña": "agraz0911",
+    "tipo": "CLIENTE"
+  },
+  {
+    "nombre": "leonardo chacon",
+    "correo": "leochacon@gmail.com",
+    "user": "leo_chacon",
+    "contraseña": "agraz01",
+    "tipo": "EMPLEADO"
+  },
+  {
+    "FechaNacimiento": "26 de Marzo de 1966",
+    "nombre": "lucia carpavila",
+    "correo": "lcarpavila@gmail.com",
+    "user": "lcarpavila",
+    "contraseña": "albr0966",
+    "tipo": "CLIENTE"
+  },
+  {
+    "nombre": "sofia mendoza",
+    "correo": "sofimendoza@gmail.com",
+    "user": "sofi_m",
+    "contraseña": "tienda2025",
+    "tipo": "CLIENTE"
+  },
+  {
+    "nombre": "carlos ramirez",
+    "correo": "carlos.ramirez@empresa.com",
+    "user": "c_ramirez",
+    "contraseña": "empleado01",
+    "tipo": "EMPLEADO"
+  },
+  {
+    "nombre": "valentina lopez",
+    "correo": "valenlopez23@hotmail.com",
+    "user": "valen_lo",
+    "contraseña": "ropa123",
+    "tipo": "CLIENTE"
+  },
+  {
+    "nombre": "miguel angel",
+    "correo": "miguel.angel@gmail.com",
+    "user": "miguel_a",
+    "contraseña": "compras987",
+    "tipo": "CLIENTE"
+  },
+  {
+    "nombre": "jessica flores",
+    "correo": "jflores@tienda.com",
+    "user": "jessicaf",
+    "contraseña": "empleada02",
+    "tipo": "EMPLEADO"
+  }
+]

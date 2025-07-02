@@ -1,0 +1,477 @@
+[
+  {
+    "fecha": "2025-06-05",
+    "monto": 4745.25,
+    "moneda": "Bs.",
+    "productos": [
+      {
+        "nombre": "Nike Hoodie",
+        "descripcion": "suave, tela algodon",
+        "categoria": "top",
+        "color": "Celeste",
+        "rutaImagen": "top_default.jpg",
+        "precioDolar": 15,
+        "talla": "S",
+        "stock": 3
+      }
+    ],
+    "usuario": {
+      "nombre": "sofia mendoza",
+      "correo": "sofimendoza@gmail.com",
+      "user": "sofi_m",
+      "contraseña": "tienda2025",
+      "tipo": "CLIENTE"
+    },
+    "metodoPago": "Transferencia"
+  },
+  {
+    "fecha": "2025-02-17",
+    "monto": 14235.75,
+    "moneda": "Bs.",
+    "productos": [
+      {
+        "nombre": "Top",
+        "descripcion": "top manga larga",
+        "categoria": "top",
+        "color": "Negro",
+        "rutaImagen": "top.jpg",
+        "precioDolar": 20,
+        "talla": "S",
+        "stock": 3
+      },
+      {
+        "nombre": "Short Nike",
+        "descripcion": "comodo",
+        "categoria": "bottom",
+        "color": "Negro",
+        "rutaImagen": "nike_short.jpg",
+        "precioDolar": 25,
+        "talla": "X",
+        "stock": 3
+      }
+    ],
+    "usuario": {
+      "nombre": "sofia mendoza",
+      "correo": "sofimendoza@gmail.com",
+      "user": "sofi_m",
+      "contraseña": "tienda2025",
+      "tipo": "CLIENTE"
+    },
+    "metodoPago": "Transferencia"
+  },
+  {
+    "fecha": "2025-02-28",
+    "monto": 25308.0,
+    "moneda": "Bs.",
+    "productos": [
+      {
+        "nombre": "Nike Bottom",
+        "descripcion": "Ropa urbana",
+        "categoria": "Ropa",
+        "color": "Negro",
+        "rutaImagen": "bottom_default.jpg",
+        "precioDolar": 80,
+        "talla": "M",
+        "stock": 3
+      }
+    ],
+    "usuario": {
+      "nombre": "ariana carpavila",
+      "correo": "anfiguera.23@est.ucab.edu.ve",
+      "user": "aryacarpavila",
+      "contraseña": "agraz0911",
+      "tipo": "CLIENTE"
+    },
+    "metodoPago": "Tarjeta"
+  },
+  {
+    "fecha": "2025-01-15",
+    "monto": 7908.75,
+    "moneda": "Bs.",
+    "productos": [
+      {
+        "nombre": "Short Nike",
+        "descripcion": "comodo",
+        "categoria": "bottom",
+        "color": "Negro",
+        "rutaImagen": "nike_short.jpg",
+        "precioDolar": 25,
+        "talla": "X",
+        "stock": 3
+      }
+    ],
+    "usuario": {
+      "nombre": "valentina lopez",
+      "correo": "valenlopez23@hotmail.com",
+      "user": "valen_lo",
+      "contraseña": "ropa123",
+      "tipo": "CLIENTE"
+    },
+    "metodoPago": "Tarjeta"
+  },
+  {
+    "fecha": "2025-04-12",
+    "monto": 4745.25,
+    "moneda": "Bs.",
+    "productos": [
+      {
+        "nombre": "Nike Hoodie",
+        "descripcion": "suave, tela algodon",
+        "categoria": "top",
+        "color": "Celeste",
+        "rutaImagen": "top_default.jpg",
+        "precioDolar": 15,
+        "talla": "S",
+        "stock": 3
+      }
+    ],
+    "usuario": {
+      "nombre": "ariana carpavila",
+      "correo": "anfiguera.23@est.ucab.edu.ve",
+      "user": "aryacarpavila",
+      "contraseña": "agraz0911",
+      "tipo": "CLIENTE"
+    },
+    "metodoPago": "Tarjeta"
+  },
+  {
+    "fecha": "2025-01-02",
+    "monto": 8436.0,
+    "moneda": "Bs.",
+    "productos": [
+      {
+        "nombre": "Nike Bottom",
+        "descripcion": "Ropa urbana",
+        "categoria": "Ropa",
+        "color": "Negro",
+        "rutaImagen": "bottom_default.jpg",
+        "precioDolar": 80,
+        "talla": "M",
+        "stock": 1
+      }
+    ],
+    "usuario": {
+      "nombre": "miguel angel",
+      "correo": "miguel.angel@gmail.com",
+      "user": "miguel_a",
+      "contraseña": "compras987",
+      "tipo": "CLIENTE"
+    },
+    "metodoPago": "Transferencia"
+  },
+  {
+    "fecha": "2025-05-17",
+    "monto": 37962.0,
+    "moneda": "Bs.",
+    "productos": [
+      {
+        "nombre": "Nike Air Force",
+        "descripcion": "Zapatos cómodos",
+        "categoria": "Zapatos",
+        "color": "Negro",
+        "rutaImagen": "Zapatos_default.jpg",
+        "precioDolar": 100,
+        "talla": "M",
+        "stock": 3
+      },
+      {
+        "nombre": "Top",
+        "descripcion": "top manga larga",
+        "categoria": "top",
+        "color": "Negro",
+        "rutaImagen": "top.jpg",
+        "precioDolar": 20,
+        "talla": "S",
+        "stock": 3
+      }
+    ],
+    "usuario": {
+      "nombre": "lucia carpavila",
+      "correo": "lcarpavila@gmail.com",
+      "user": "lcarpavila",
+      "contraseña": "albr0966",
+      "tipo": "CLIENTE"
+    },
+    "metodoPago": "Transferencia"
+  },
+  {
+    "fecha": "2025-04-02",
+    "monto": 19508.25,
+    "moneda": "Bs.",
+    "productos": [
+      {
+        "nombre": "Nike Hoodie",
+        "descripcion": "suave, tela algodon",
+        "categoria": "top",
+        "color": "Celeste",
+        "rutaImagen": "top_default.jpg",
+        "precioDolar": 15,
+        "talla": "S",
+        "stock": 3
+      },
+      {
+        "nombre": "Top",
+        "descripcion": "top manga larga",
+        "categoria": "top",
+        "color": "Negro",
+        "rutaImagen": "top.jpg",
+        "precioDolar": 20,
+        "talla": "S",
+        "stock": 2
+      },
+      {
+        "nombre": "Nike Air Force",
+        "descripcion": "Zapatos cómodos",
+        "categoria": "Zapatos",
+        "color": "Negro",
+        "rutaImagen": "Zapatos_default.jpg",
+        "precioDolar": 100,
+        "talla": "M",
+        "stock": 1
+      }
+    ],
+    "usuario": {
+      "nombre": "valentina lopez",
+      "correo": "valenlopez23@hotmail.com",
+      "user": "valen_lo",
+      "contraseña": "ropa123",
+      "tipo": "CLIENTE"
+    },
+    "metodoPago": "Transferencia"
+  },
+  {
+    "fecha": "2025-01-16",
+    "monto": 7381.5,
+    "moneda": "Bs.",
+    "productos": [
+      {
+        "nombre": "Top",
+        "descripcion": "top manga larga",
+        "categoria": "top",
+        "color": "Negro",
+        "rutaImagen": "top.jpg",
+        "precioDolar": 20,
+        "talla": "S",
+        "stock": 2
+      },
+      {
+        "nombre": "Nike Hoodie",
+        "descripcion": "suave, tela algodon",
+        "categoria": "top",
+        "color": "Celeste",
+        "rutaImagen": "top_default.jpg",
+        "precioDolar": 15,
+        "talla": "S",
+        "stock": 2
+      }
+    ],
+    "usuario": {
+      "nombre": "miguel angel",
+      "correo": "miguel.angel@gmail.com",
+      "user": "miguel_a",
+      "contraseña": "compras987",
+      "tipo": "CLIENTE"
+    },
+    "metodoPago": "Tarjeta"
+  },
+  {
+    "fecha": "2025-02-26",
+    "monto": 12654.0,
+    "moneda": "Bs.",
+    "productos": [
+      {
+        "nombre": "Nike Top",
+        "descripcion": "Camisa ejercicio",
+        "categoria": "Top",
+        "color": "Rojo",
+        "rutaImagen": "top_default.jpg",
+        "precioDolar": 120,
+        "talla": "L",
+        "stock": 1
+      }
+    ],
+    "usuario": {
+      "nombre": "sofia mendoza",
+      "correo": "sofimendoza@gmail.com",
+      "user": "sofi_m",
+      "contraseña": "tienda2025",
+      "tipo": "CLIENTE"
+    },
+    "metodoPago": "Transferencia"
+  },
+  {
+    "fecha": "2025-01-30",
+    "monto": 4218.0,
+    "moneda": "Bs.",
+    "productos": [
+      {
+        "nombre": "Top",
+        "descripcion": "top manga larga",
+        "categoria": "top",
+        "color": "Negro",
+        "rutaImagen": "top.jpg",
+        "precioDolar": 20,
+        "talla": "S",
+        "stock": 2
+      }
+    ],
+    "usuario": {
+      "nombre": "miguel angel",
+      "correo": "miguel.angel@gmail.com",
+      "user": "miguel_a",
+      "contraseña": "compras987",
+      "tipo": "CLIENTE"
+    },
+    "metodoPago": "Tarjeta"
+  },
+  {
+    "fecha": "2025-02-28",
+    "monto": 46398.0,
+    "moneda": "Bs.",
+    "productos": [
+      {
+        "nombre": "Nike Air Force",
+        "descripcion": "Zapatos cómodos",
+        "categoria": "Zapatos",
+        "color": "Negro",
+        "rutaImagen": "Zapatos_default.jpg",
+        "precioDolar": 100,
+        "talla": "M",
+        "stock": 2
+      },
+      {
+        "nombre": "Nike Top",
+        "descripcion": "Camisa ejercicio",
+        "categoria": "Top",
+        "color": "Rojo",
+        "rutaImagen": "top_default.jpg",
+        "precioDolar": 120,
+        "talla": "L",
+        "stock": 2
+      }
+    ],
+    "usuario": {
+      "nombre": "miguel angel",
+      "correo": "miguel.angel@gmail.com",
+      "user": "miguel_a",
+      "contraseña": "compras987",
+      "tipo": "CLIENTE"
+    },
+    "metodoPago": "Transferencia"
+  },
+  {
+    "fecha": "2025-04-12",
+    "monto": 48507.0,
+    "moneda": "Bs.",
+    "productos": [
+      {
+        "nombre": "Nike Top",
+        "descripcion": "Camisa ejercicio",
+        "categoria": "Top",
+        "color": "Rojo",
+        "rutaImagen": "top_default.jpg",
+        "precioDolar": 120,
+        "talla": "L",
+        "stock": 1
+      },
+      {
+        "nombre": "Nike Air Force",
+        "descripcion": "Zapatos cómodos",
+        "categoria": "Zapatos",
+        "color": "Negro",
+        "rutaImagen": "Zapatos_default.jpg",
+        "precioDolar": 100,
+        "talla": "M",
+        "stock": 3
+      },
+      {
+        "nombre": "Top",
+        "descripcion": "top manga larga",
+        "categoria": "top",
+        "color": "Negro",
+        "rutaImagen": "top.jpg",
+        "precioDolar": 20,
+        "talla": "S",
+        "stock": 2
+      }
+    ],
+    "usuario": {
+      "nombre": "ariana carpavila",
+      "correo": "anfiguera.23@est.ucab.edu.ve",
+      "user": "aryacarpavila",
+      "contraseña": "agraz0911",
+      "tipo": "CLIENTE"
+    },
+    "metodoPago": "Transferencia"
+  },
+  {
+    "fecha": "2025-06-21",
+    "monto": 53252.25,
+    "moneda": "Bs.",
+    "productos": [
+      {
+        "nombre": "Nike Hoodie",
+        "descripcion": "suave, tela algodon",
+        "categoria": "top",
+        "color": "Celeste",
+        "rutaImagen": "top_default.jpg",
+        "precioDolar": 15,
+        "talla": "S",
+        "stock": 3
+      },
+      {
+        "nombre": "Nike Air Force",
+        "descripcion": "Zapatos cómodos",
+        "categoria": "Zapatos",
+        "color": "Negro",
+        "rutaImagen": "Zapatos_default.jpg",
+        "precioDolar": 100,
+        "talla": "M",
+        "stock": 1
+      },
+      {
+        "nombre": "Nike Top",
+        "descripcion": "Camisa ejercicio",
+        "categoria": "Top",
+        "color": "Rojo",
+        "rutaImagen": "top_default.jpg",
+        "precioDolar": 120,
+        "talla": "L",
+        "stock": 3
+      }
+    ],
+    "usuario": {
+      "nombre": "miguel angel",
+      "correo": "miguel.angel@gmail.com",
+      "user": "miguel_a",
+      "contraseña": "compras987",
+      "tipo": "CLIENTE"
+    },
+    "metodoPago": "Transferencia"
+  },
+  {
+    "fecha": "2025-01-02",
+    "monto": 7908.75,
+    "moneda": "Bs.",
+    "productos": [
+      {
+        "nombre": "Short Nike",
+        "descripcion": "comodo",
+        "categoria": "bottom",
+        "color": "Negro",
+        "rutaImagen": "nike_short.jpg",
+        "precioDolar": 25,
+        "talla": "X",
+        "stock": 3
+      }
+    ],
+    "usuario": {
+      "nombre": "sofia mendoza",
+      "correo": "sofimendoza@gmail.com",
+      "user": "sofi_m",
+      "contraseña": "tienda2025",
+      "tipo": "CLIENTE"
+    },
+    "metodoPago": "Tarjeta"
+  }
+]
