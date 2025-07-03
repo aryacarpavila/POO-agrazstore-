@@ -79,7 +79,7 @@ public class TiendaAgraz_cliente extends JFrame {
         // FILTROS
         JPanel filtros = new JPanel(new FlowLayout());
         filtros.setBackground(Color.WHITE);
-        combo_categoria = new JComboBox<>(new String[]{"Todas","Zapatos","Ropa"});
+        combo_categoria = new JComboBox<>(new String[]{"Todas","Zapatos","Top","Bottom"});
         combo_precio    = new JComboBox<>(new String[]{"Todos","< 50","50 - 100","> 100"});
         campo_busqueda  = new JTextField(15);
         JButton boton_filtrar = new JButton("Filtrar");

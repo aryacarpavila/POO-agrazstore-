@@ -87,7 +87,7 @@ public class TiendaAgraz_empleado extends JFrame {
         });
 
         panel_filtros.add(new JLabel("Categoría:"));
-        combo_categoria = new JComboBox<>(new String[]{"Todas", "Zapatos", "Ropa", "Accesorios"});
+        combo_categoria = new JComboBox<>(new String[]{"Todas","Zapatos","Top","Bottom"});
         panel_filtros.add(combo_categoria);
 
         panel_filtros.add(new JLabel("Precio $:"));
@@ -196,7 +196,7 @@ public class TiendaAgraz_empleado extends JFrame {
                 
                 🔁 ACTUALIZAR TASA DE CAMBIO:
                 - Modifica el campo "Tasa Dólar (Bs)".
-                - Presiona el botón 'Filtrar' para recalcular todos los precios.
+                - Presiona el botón 'OK' para recalcular todos los precios.
                 
                 🚪 CERRAR SESIÓN:
                 - Presiona 'Cerrar sesión' para volver a la pantalla de inicio.
@@ -386,7 +386,7 @@ public class TiendaAgraz_empleado extends JFrame {
     JTextField precio_nuevoproducto = new JTextField();
     JComboBox<String> categoria_nuevoproducto = new JComboBox<>(new String[]{"top", "bottom", "zapatos", "accesorios"});
     precio_nuevoproducto.setToolTipText("Ingresa precio en USD");
-    JComboBox<String> talla_nuevoproducto = new JComboBox<>(new String[]{"XS", "S", "M", "L", "XL"});
+    JComboBox<String> talla_nuevoproducto = new JComboBox<>(new String[]{"S", "M", "L", "U"});
     JComboBox<String> color_nuevoproducto = new JComboBox<>(new String[]{
         "Amarillo", "Azul", "Blanco", "Celeste", "Dorado", "Gris",
         "Marrón", "Morado", "Negro", "Naranja", "Plateado",

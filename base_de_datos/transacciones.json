@@ -473,5 +473,125 @@
       "tipo": "CLIENTE"
     },
     "metodoPago": "Tarjeta"
+  },
+  {
+  "fecha": "2025-07-02",
+  "monto": 2520.0,
+  "moneda": "Bs.",
+  "productos": [
+    {
+      "nombre": "Aretes de estrella",
+      "descripcion": "Aretes plateados con gancho, cuenta decorativa redonda y colgante en forma de estrella hueca. Un diseño sutil y versátil, ideal para looks casuales o románticos.",
+      "categoria": "accesorios",
+      "color": "Plateado",
+      "rutaImagen": "earing.jpg",
+      "precioDolar": 10,
+      "talla": "S",
+      "stock": 8
+    }
+  ],
+  "usuario": {
+    "nombre": "valentina lopez",
+    "correo": "valenlopez23@hotmail.com",
+    "user": "valen_lo",
+    "contraseña": "ropa123",
+    "tipo": "CLIENTE"
+  },
+  "metodoPago": "Transferencia"
+},
+{
+  "fecha": "2025-07-02",
+  "monto": 15960.0,
+  "moneda": "Bs.",
+  "productos": [
+    {
+      "nombre": "Botines deportivos con plataforma",
+      "descripcion": "Zapatillas tipo botín con cordones blancos, costuras visibles y suela de plataforma gruesa en color blanco con base marrón. Combinan el estilo urbano de unas sneakers con la altura y carácter de una bota chunky.",
+      "categoria": "calzado",
+      "color": "Negro",
+      "rutaImagen": "shoes_03.jpg",
+      "precioDolar": 42,
+      "talla": "S",
+      "stock": 4
+    },
+    {
+      "nombre": "Corset negro",
+      "descripcion": "Cinturón estilo corset hecho de material tipo cuero con cordones ajustables al frente y ojales metálicos. Cuenta con paneles elásticos en los laterales para un ajuste cómodo y ceñido a la cintura. Ideal para looks alternativos, góticos o de inspiración vintage.",
+      "categoria": "accesorios",
+      "color": "Negro",
+      "rutaImagen": "corset.jpg",
+      "precioDolar": 18,
+      "talla": "M",
+      "stock": 7
+    }
+  ],
+  "usuario": {
+    "nombre": "sofia mendoza",
+    "correo": "sofimendoza@gmail.com",
+    "user": "sofi_m",
+    "contraseña": "tienda2025",
+    "tipo": "CLIENTE"
+  },
+  "metodoPago": "Tarjeta"
+  },
+  {
+  "fecha": "2025-07-02",
+  "monto": 11400.0,
+  "moneda": "Bs.",
+  "productos": [
+    {
+      "nombre": "Mary Jane negros",
+      "descripcion": "Zapatos estilo Mary Jane con acabado brillante, punta redonda y tacón grueso. Incluyen correa con hebilla y se combinan perfectamente con calcetas para un look dulce y alternativo.",
+      "categoria": "calzado",
+      "color": "Negro",
+      "rutaImagen": "shoes.jpg",
+      "precioDolar": 30,
+      "talla": "S",
+      "stock": 6
+    }
+  ],
+  "usuario": {
+    "nombre": "lucia carpavila",
+    "correo": "lcarpavila@gmail.com",
+    "user": "lcarpavila",
+    "contraseña": "albr0966",
+    "tipo": "CLIENTE"
+  },
+  "metodoPago": "Transferencia"
+},
+{
+  "fecha": "2025-07-02",
+  "monto": 14400.0,
+  "moneda": "Bs.",
+  "productos": [
+    {
+      "nombre": "Corset negro",
+      "descripcion": "Cinturón estilo corset hecho de material tipo cuero con cordones ajustables al frente y ojales metálicos. Cuenta con paneles elásticos en los laterales para un ajuste cómodo y ceñido a la cintura. Ideal para looks alternativos, góticos o de inspiración vintage.",
+      "categoria": "accesorios",
+      "color": "Negro",
+      "rutaImagen": "corset.jpg",
+      "precioDolar": 18,
+      "talla": "M",
+      "stock": 7
+    },
+    {
+      "nombre": "Aretes de estrella",
+      "descripcion": "Aretes plateados con gancho, cuenta decorativa redonda y colgante en forma de estrella hueca. Un diseño sutil y versátil, ideal para looks casuales o románticos.",
+      "categoria": "accesorios",
+      "color": "Plateado",
+      "rutaImagen": "earing.jpg",
+      "precioDolar": 10,
+      "talla": "S",
+      "stock": 8
+    }
+  ],
+  "usuario": {
+    "nombre": "miguel angel",
+    "correo": "miguel.angel@gmail.com",
+    "user": "miguel_a",
+    "contraseña": "compras987",
+    "tipo": "CLIENTE"
+  },
+  "metodoPago": "Tarjeta"
   }
 ]

@@ -78,5 +78,56 @@
     "stock": 2,
     "precioDolar": 25,
     "talla": "X"
-  }
+  },
+  {
+  "nombre": "Jeans corte corazón",
+  "descripcion": "Jeans acampanados de mezclilla azul con cortes en forma de corazón en las piernas. Diseño de cintura alta y estilo llamativo.",
+  "categoria": "bottom",
+  "color": "Azul",
+  "rutaImagen": "pantalon.jpg",
+  "stock": 5,
+  "precioDolar": 40,
+  "talla": "M"
+  },
+  {
+  "nombre": "Jeans negros rasgados",
+  "descripcion": "Jeans de mezclilla negra de tiro alto con pierna ancha. Diseño con múltiples rasgaduras distribuidas en cadera, muslos y rodillas, ideal para un look urbano y audaz.",
+  "categoria": "bottom",
+  "color": "Negro",
+  "rutaImagen": "pantalon_01.jpg",
+  "stock": 4,
+  "precioDolar": 38,
+  "talla": "M"
+  },
+  {
+  "nombre": "Mary Jane negros",
+  "descripcion": "Zapatos estilo Mary Jane con acabado brillante, punta redonda y tacón grueso. Incluyen correa con hebilla y se combinan perfectamente con calcetas para un look dulce y alternativo.",
+  "categoria": "Zapatos",
+  "color": "Negro",
+  "rutaImagen": "shoes.jpg",
+  "stock": 6,
+  "precioDolar": 30,
+  "talla": "S"
+  },
+  {
+  "nombre": "Aretes de estrellas",
+  "descripcion": "Aretes plateados con gancho, cuenta decorativa redonda y colgante en forma de estrella hueca. Un diseño sutil y versátil, ideal para looks casuales o románticos.",
+  "categoria": "accesorios",
+  "color": "Plateado",
+  "rutaImagen": "earing.jpg",
+  "stock": 8,
+  "precioDolar": 10,
+  "talla": "S"
+  },
+  {
+  "nombre": "Corset negro",
+  "descripcion": "Cinturón estilo corset hecho de material tipo cuero con cordones ajustables al frente y ojales metálicos. Cuenta con paneles elásticos en los laterales para un ajuste cómodo y ceñido a la cintura. Ideal para looks alternativos, góticos o de inspiración vintage.",
+  "categoria": "accesorios",
+  "color": "Negro",
+  "rutaImagen": "corset.jpg",
+  "stock": 7,
+  "precioDolar": 18,
+  "talla": "M"
+}
+
 ]
